@@ -1,25 +1,23 @@
-# Public Housing & Shin-hui-ta Strategic Analyzer - Premium Redesign
+# Public Housing & Shin-hui-ta Strategic Analyzer - Refined Classic
 
 ## Overview
-A premium, highly interactive strategic analysis tool with a "Warm Modern" aesthetic. Inspired by high-end editorial design, featuring soft textures, elegant typography, and professional visualizations.
+A restoration of the original, highly readable design with enhanced visual aesthetics. Focuses on clarity, proper text alignment, and a professional "Sophisticated Architecture" background.
 
-## Visual Identity (Nanobanana Style)
-- **Palette:** Soft Cream (#FCFAF7), Sage Green (#556B2F), Deep Navy (#1A252F), and Muted Gold (#C5A059).
-- **Typography:** Serif for headings (Playfair Display) + Clean Sans-serif for body (Noto Sans KR).
-- **Imagery:** High-quality, warm-toned architectural photography and 3D house icons.
-- **UI Elements:** 
-    - Floating glass cards with subtle border gradients.
-    - Soft, multi-layered shadows for depth.
-    - Micro-interactions and scroll-reveal animations.
+## Design Strategy
+- **Layout:** Restored to the first successful version (Wide containers, clear grids).
+- **Typography:** Noto Sans KR (Standard for Korean web readability) to ensure sentences stay on one line where intended.
+- **Visual Enhancement:** 
+    - Full-page background with a high-quality architectural image (Warm/Modern).
+    - Subtle glassmorphism on content cards for depth without sacrificing readability.
+    - Improved spacing to prevent awkward line breaks.
+- **Color Palette:** Warm White, Navy, Sage Green, and Amber (Original palette).
 
-## Key Design Updates
-1. **Premium Hero Section:** Full-bleed layout with a high-quality architectural image and a compelling value proposition.
-2. **Visual Storytelling:** Use of icons and progress indicators to guide the user through the complex subscription process.
-3. **Enhanced Calculators:** Neumorphic/Glassmorphic input fields for a tactile feel.
-4. **Interactive Simulation:** More visual feedback in the Shin-hui-ta simulator with dynamic color-coded rings.
+## Key Features (Restored)
+1. **Supply Ratio Chart:** Restored to the clean doughnut chart.
+2. **Interactive Calculators:** Stable logic and layout for Multi-child, Newlywed, etc.
+3. **Shin-hui-ta Simulator:** Clear visual ring and sliders.
 
 ## Implementation Steps
-1. **Assets:** Integrate premium fonts and placeholder images from high-quality sources (Unsplash).
-2. **Layout:** Rebuild the grid for better whitespace and "breathability."
-3. **Interactivity:** Add AOS (Animate On Scroll) or custom CSS transitions.
-4. **Final Polish:** Ensure mobile responsiveness and cross-browser consistency.
+1. **Restore Structure:** Roll back `index.html` and `main.js` to the stable original logic.
+2. **Theming:** Apply the background image and card styles in `style.css`.
+3. **Verification:** Check line lengths and mobile responsiveness.
