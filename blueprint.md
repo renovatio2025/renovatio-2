@@ -1,17 +1,20 @@
-# Integrated Cheongyak Strategy & Shin-hui-ta Center Blueprint
+# Unified Housing Strategy Portal Blueprint
 
 ## Overview
-A comprehensive integration of the "Special Supply Strategy Center" and the "Shin-hui-ta Strategy Analyzer." This version combines strategic data visualization with interactive calculators and mortgage simulators.
+A unified portal containing two major applications:
+1. **Application A (Warm/Sage):** Public Housing & Shin-hui-ta Strategic Analyzer.
+2. **Application B (Blue/Professional):** Cheongyak Special Supply Strategy Center.
 
-## New Integrated Structure (Tabs)
-1. **📊 대시보드 (Dashboard):** Supply ratios (70:30) and market trends.
-2. **✅ 자격 요건 (Qualifications):** Basic requirements (Savings, Housing, Assets). *[Added from previous code]*
-3. **🎯 전략 시뮬레이터 (Strategies):** Multi-child, Newlywed, and Newborn score calculators.
-4. **🏘️ 신혼희망타운 (Shin-hui-ta):** Profit-sharing mortgage simulator (LTV/Kids/Years). *[Added from previous code]*
-5. **⚠️ 거주 요건 함정 (Pitfalls):** Detailed residence area logic.
-6. **🔓 예비입주자의 비밀 (Secrets):** 100% random draw mechanism for reserved candidates.
+## Structure
+- **Global Navigation:** A top-level bar to switch between the two main applications.
+- **Application A Module:** Focuses on general public housing, basic qualifications, and the Shin-hui-ta profit-sharing simulator.
+- **Application B Module:** Focuses on deep-dives into special supply rules, pitfall analysis, and reserved candidate secrets.
 
-## Technical Updates
-- **index.html:** Added new navigation items and merged section content.
-- **style.css:** Maintained professional "Strategic Calm" theme while ensuring all merged elements fit the aesthetic.
-- **main.js:** Integrated the profit-sharing calculation logic and updated tab management.
+## Visuals
+- **Common Background:** The faint, blurred architectural background as requested by the user.
+- **Adaptive Theming:** Each application maintains its unique palette (Sage/Warm vs. Strategic Blue) within its own container.
+
+## Implementation Plan
+1. **Index.html:** Create two main containers (`#app-analyzer` and `#app-center`) and a global toggle nav.
+2. **Style.css:** Consolidate styles for both themes.
+3. **Main.js:** Handle global "Page" switching and sub-tab logic for both applications.

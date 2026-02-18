@@ -1,19 +1,108 @@
 document.addEventListener('DOMContentLoaded', () => {
-    initSupplyChart();
-    initTabNavigation();
-    initStrategySimulation();
-    initScoreCalculations();
-    initShinhuitaSimulator();
+    initGlobalNavigation();
+    
+    // Module A: Sage Analyzer Init
+    initSageModule();
+    
+    // Module B: Blue Center Init
+    initBlueModule();
 });
 
 /**
- * Supply Ratio Chart
+ * GLOBAL NAVIGATION: Switching between Modules
  */
-function initSupplyChart() {
-    const canvas = document.getElementById('supplyChart');
-    if (!canvas) return;
+function initGlobalNavigation() {
+    const analyzerBtn = document.getElementById('global-nav-analyzer');
+    const centerBtn = document.getElementById('global-nav-center');
+    const analyzerMod = document.getElementById('module-analyzer');
+    const centerMod = document.getElementById('module-center');
 
-    const ctx = canvas.getContext('2d');
+    analyzerBtn.addEventListener('click', () => {
+        // UI
+        analyzerBtn.classList.add('active-global', 'border-sage-secondary', 'text-sage-secondary');
+        analyzerBtn.classList.remove('border-transparent', 'text-gray-500');
+        centerBtn.classList.remove('active-global', 'border-blue-primary', 'text-blue-primary');
+        centerBtn.classList.add('border-transparent', 'text-gray-500');
+
+        // Content
+        analyzerMod.classList.remove('hidden');
+        analyzerMod.classList.add('block');
+        centerMod.classList.add('hidden');
+        centerMod.classList.remove('block');
+    });
+
+    centerBtn.addEventListener('click', () => {
+        // UI
+        centerBtn.classList.add('active-global', 'border-blue-primary', 'text-blue-primary');
+        centerBtn.classList.remove('border-transparent', 'text-gray-500');
+        analyzerBtn.classList.remove('active-global', 'border-sage-secondary', 'text-sage-secondary');
+        analyzerBtn.classList.add('border-transparent', 'text-gray-500');
+
+        // Content
+        centerMod.classList.remove('hidden');
+        centerMod.classList.add('block');
+        analyzerMod.classList.add('hidden');
+        analyzerMod.classList.remove('block');
+    });
+}
+
+/**
+ * MODULE A: SAGE ANALYZER LOGIC
+ */
+function initSageModule() {
+    initSageChart();
+    initSageShinhuita();
+}
+
+function initSageChart() {
+    const ctx = document.getElementById('sage-supplyRatioChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['특별공급 (80%)', '일반공급 (20%)'],
+            datasets: [{
+                data: [80, 20],
+                backgroundColor: ['#2C3E50', '#E5E7EB'],
+                borderWidth: 0
+            }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, cutout: '80%', plugins: { legend: { position: 'bottom' } } }
+    });
+}
+
+function initSageShinhuita() {
+    document.querySelectorAll('.st-calc-sage').forEach(el => {
+        el.addEventListener('input', updateSageProfitShare);
+    });
+    updateSageProfitShare();
+}
+
+function updateSageProfitShare() {
+    const ltv = parseInt(document.getElementById('sage-st-ltv').value);
+    const kids = parseInt(document.querySelector('input[name="sage-st-kids"]:checked').value);
+    document.getElementById('sage-st-ltv-val').innerText = ltv + "%";
+
+    let share = 50;
+    if (ltv <= 30) share = 10;
+    else if (ltv <= 50) share = 30;
+    share = Math.max(10, share - (kids >= 2 ? 20 : (kids === 1 ? 10 : 0)));
+
+    document.getElementById('sage-share-percent').innerText = share + "%";
+    const ring = document.getElementById('sage-profit-ring');
+    ring.style.strokeDashoffset = 690 - (690 * (share * 2 / 100));
+}
+
+/**
+ * MODULE B: BLUE CENTER LOGIC
+ */
+function initBlueModule() {
+    initBlueChart();
+    initBlueTabs();
+    initBlueCalculators();
+}
+
+function initBlueChart() {
+    const ctx = document.getElementById('blue-supplyChart').getContext('2d');
     new Chart(ctx, {
         type: 'doughnut',
         data: {
@@ -21,159 +110,59 @@ function initSupplyChart() {
             datasets: [{
                 data: [70, 30],
                 backgroundColor: ['#1E3A8A', '#E5E7EB'],
-                borderWidth: 0,
-                hoverOffset: 15
+                borderWidth: 0
             }]
         },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            cutout: '75%',
-            plugins: {
-                legend: { 
-                    position: 'bottom', 
-                    labels: { 
-                        padding: 30, 
-                        font: { family: '"Noto Sans KR"', size: 14, weight: '700' },
-                        color: '#1F2937'
-                    } 
-                }
-            },
-            animation: {
-                animateScale: true,
-                animateRotate: true
-            }
-        }
+        options: { responsive: true, maintainAspectRatio: false, cutout: '75%', plugins: { legend: { position: 'bottom' } } }
     });
 }
 
-/**
- * Main Tab Navigation
- */
-function initTabNavigation() {
-    const tabs = {
-        'nav-dashboard': 'dashboard',
-        'nav-qualifications': 'qualifications',
-        'nav-strategies': 'strategies',
-        'nav-shinhuita': 'shinhuita',
-        'nav-pitfalls': 'pitfalls',
-        'nav-secrets': 'secrets'
+function initBlueTabs() {
+    // Sub-tab logic for Module B
+    const navItems = {
+        'nav-center-dashboard': 'center-dashboard',
+        'nav-center-strategies': 'center-strategies',
+        'nav-center-pitfalls': 'center-pitfalls',
+        'nav-center-secrets': 'center-secrets'
     };
 
-    Object.keys(tabs).forEach(btnId => {
-        const btn = document.getElementById(btnId);
-        if (!btn) return;
+    Object.keys(navItems).forEach(id => {
+        document.getElementById(id).addEventListener('click', () => {
+            document.querySelectorAll('.center-nav-item').forEach(el => el.classList.remove('center-nav-active'));
+            document.getElementById(id).classList.add('center-nav-active');
+            document.querySelectorAll('.center-tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(navItems[id]).classList.remove('hidden');
+        });
+    });
 
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.nav-item').forEach(b => {
-                b.classList.remove('nav-active', 'text-primary');
-                b.classList.add('text-gray-500');
-            });
-            btn.classList.add('nav-active', 'text-primary');
-            btn.classList.remove('text-gray-500');
+    // Strategy sub-tabs
+    const stratBtns = {
+        'blue-btn-multi': 'blue-strat-multi',
+        'blue-btn-newlywed': 'blue-strat-newlywed',
+        'blue-btn-newborn': 'blue-strat-newborn'
+    };
 
-            document.querySelectorAll('.tab-content').forEach(c => {
-                c.classList.add('hidden');
-                c.classList.remove('block');
-            });
-            const activeContent = document.getElementById(tabs[btnId]);
-            activeContent.classList.remove('hidden');
-            activeContent.classList.add('block');
+    Object.keys(stratBtns).forEach(id => {
+        document.getElementById(id).addEventListener('click', () => {
+            document.querySelectorAll('.blue-strat-btn').forEach(el => el.classList.remove('blue-active-strat', 'text-blue-primary'));
+            document.getElementById(id).classList.add('blue-active-strat');
+            document.querySelectorAll('.blue-strat-detail').forEach(el => el.classList.add('hidden'));
+            document.getElementById(stratBtns[id]).classList.remove('hidden');
         });
     });
 }
 
-/**
- * Strategy Sub-tabs
- */
-function initStrategySimulation() {
-    const stratButtons = {
-        'btn-multi': 'strat-multi',
-        'btn-newlywed': 'strat-newlywed',
-        'btn-newborn': 'strat-newborn'
-    };
-
-    Object.keys(stratButtons).forEach(btnId => {
-        const btn = document.getElementById(btnId);
-        if (!btn) return;
-
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.strat-btn').forEach(b => {
-                b.classList.remove('active-strat');
-                b.classList.add('text-gray-500');
-            });
-            btn.classList.add('active-strat');
-            btn.classList.remove('text-gray-500');
-
-            document.querySelectorAll('.strategy-detail').forEach(c => {
-                c.classList.add('hidden');
-                c.classList.remove('block');
-            });
-            const activeContent = document.getElementById(stratButtons[btnId]);
-            activeContent.classList.remove('hidden');
-            activeContent.classList.add('block');
-        });
+function initBlueCalculators() {
+    const calcInputs = ['blue-multi-kids', 'blue-multi-3gen'];
+    calcInputs.forEach(id => {
+        document.getElementById(id).addEventListener('change', calcBlueMulti);
     });
+    calcBlueMulti();
 }
 
-/**
- * Multi-child Score Calc
- */
-function initScoreCalculations() {
-    const mcInputs = ['multi-kids', 'multi-babies', 'multi-3gen'];
-    mcInputs.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.addEventListener('change', calcMultiScore);
-    });
-    calcMultiScore();
-}
-
-function calcMultiScore() {
-    const kids = parseInt(document.getElementById('multi-kids').value);
-    const is3Gen = document.getElementById('multi-3gen').checked;
+function calcBlueMulti() {
+    const kids = parseInt(document.getElementById('blue-multi-kids').value);
+    const is3Gen = document.getElementById('blue-multi-3gen').checked;
     const total = 40 + kids + (is3Gen ? 5 : 0);
-    document.getElementById('multi-score-display').innerText = total + "점";
-}
-
-/**
- * Shin-hui-ta Profit Share Simulator
- */
-function initShinhuitaSimulator() {
-    document.querySelectorAll('.st-calc').forEach(el => {
-        el.addEventListener('input', updateProfitShare);
-    });
-    updateProfitShare();
-}
-
-function updateProfitShare() {
-    const ltv = parseInt(document.getElementById('st-ltv').value);
-    const kidsInput = document.querySelector('input[name="st-kids"]:checked');
-    const kids = kidsInput ? parseInt(kidsInput.value) : 2;
-
-    document.getElementById('st-ltv-val').innerText = ltv + "%";
-
-    let share = 50;
-    if (ltv <= 30) share = 10;
-    else if (ltv <= 50) share = 30;
-
-    const discount = kids >= 2 ? 20 : (kids === 1 ? 10 : 0);
-    share = Math.max(10, share - discount);
-
-    document.getElementById('share-percent').innerText = share + "%";
-    
-    // Ring Animation (Total 690 dasharray)
-    const visualPercent = share * 2; 
-    const offset = 690 - (690 * (visualPercent / 100));
-    const ring = document.getElementById('profit-ring');
-    ring.style.strokeDashoffset = offset;
-    ring.style.stroke = share > 30 ? '#EF4444' : '#F59E0B';
-
-    const comment = document.getElementById('share-comment');
-    if (share > 30) {
-        comment.innerText = "수익 반납 비율이 높음 (비추천)";
-        comment.style.color = "#EF4444";
-    } else {
-        comment.innerText = "합리적인 자금 계획 (추천)";
-        comment.style.color = "#1E3A8A";
-    }
+    document.getElementById('blue-multi-score-display').innerText = total + "점";
 }

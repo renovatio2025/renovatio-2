@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>청약 특별공급 & 신희타 통합 전략 센터</title>
+    <title>청약 특별공급 & 신희타 통합 분석 포털</title>
     <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com/"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <!-- Google Fonts -->
@@ -19,10 +19,13 @@
             theme: {
                 extend: {
                     colors: {
-                        'primary': '#1E3A8A', // Blue 900
-                        'secondary': '#F59E0B', // Amber 500
-                        'accent-success': '#10B981', // Emerald 500
-                        'bg-warm': '#F9FAFB', // Gray 50
+                        'sage-primary': '#2C3E50',
+                        'sage-secondary': '#556B2F',
+                        'sage-accent': '#D97706',
+                        'blue-primary': '#1E3A8A',
+                        'blue-accent': '#F59E0B',
+                        'blue-success': '#10B981',
+                        'bg-warm': '#F9FAFB',
                     },
                     fontFamily: {
                         sans: ['"Noto Sans KR"', 'sans-serif'],
@@ -32,215 +35,215 @@
         }
     </script>
 </head>
-<body class="bg-bg-warm text-gray-800 flex flex-col min-h-screen">
+<body class="text-slate-800 antialiased overflow-x-hidden min-h-screen flex flex-col">
+    <!-- Common Faint Background -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden">
+        <div class="faint-bg-image"></div>
+        <div class="absolute inset-0 bg-white/80 backdrop-blur-[2px]"></div>
+    </div>
 
-    <!-- Header -->
-    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <span class="text-2xl">🏢</span>
-                <h1 class="text-xl md:text-2xl font-bold text-primary tracking-tight">청약 특별공급 & 신희타 전략 센터</h1>
+    <!-- GLOBAL NAVIGATION (PAGE SWITCHER) -->
+    <nav class="bg-white/90 backdrop-blur-md sticky top-0 z-[100] border-b border-gray-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center h-16">
+            <div class="font-bold text-lg md:text-xl text-sage-primary flex items-center gap-2">
+                <span>🏢</span> Housing Solution Portal
             </div>
-            <button class="text-sm text-gray-500 hover:text-primary md:block hidden">
-                청약 당첨 핵심 가이드
-            </button>
-        </div>
-    </header>
-
-    <!-- Main Navigation -->
-    <nav class="bg-white shadow-sm sticky top-[65px] md:top-[73px] z-40 overflow-x-auto">
-        <div class="max-w-6xl mx-auto px-4">
-            <ul class="flex space-x-6 md:space-x-8 text-sm md:text-base whitespace-nowrap py-3">
-                <li><button id="nav-dashboard" class="nav-item nav-active pb-2 transition-colors">📊 대시보드</button></li>
-                <li><button id="nav-qualifications" class="nav-item pb-2 text-gray-500 hover:text-primary transition-colors">✅ 자격 요건</button></li>
-                <li><button id="nav-strategies" class="nav-item pb-2 text-gray-500 hover:text-primary transition-colors">🎯 전략 시뮬레이터</button></li>
-                <li><button id="nav-shinhuita" class="nav-item pb-2 text-gray-500 hover:text-primary transition-colors">🏘️ 신혼희망타운</button></li>
-                <li><button id="nav-pitfalls" class="nav-item pb-2 text-gray-500 hover:text-primary transition-colors">⚠️ 거주 요건 함정</button></li>
-                <li><button id="nav-secrets" class="nav-item pb-2 text-gray-500 hover:text-primary transition-colors">🔓 예비입주자의 비밀</button></li>
-            </ul>
+            <div class="flex gap-2 md:gap-4 h-full">
+                <button id="global-nav-analyzer" class="global-nav-btn active-global h-full px-4 border-b-4 border-sage-secondary font-bold text-sage-secondary transition-all">
+                    종합 분석 솔루션
+                </button>
+                <button id="global-nav-center" class="global-nav-btn h-full px-4 border-b-4 border-transparent font-medium text-gray-500 hover:text-blue-primary transition-all">
+                    특공 전략 심화 센터
+                </button>
+            </div>
         </div>
     </nav>
 
-    <!-- Main Content Area -->
-    <main class="flex-grow max-w-6xl mx-auto px-4 py-8 w-full">
-
-        <!-- SECTION 1: DASHBOARD -->
-        <section id="dashboard" class="tab-content block animate-fade-in">
-            <div class="mb-8">
-                <h2 class="text-2xl font-bold text-gray-800 mb-2">왜 '특별공급'인가요?</h2>
-                <p class="text-gray-600 leading-relaxed">
-                    공공분양은 전체 물량의 <strong>70%</strong>가 특별공급으로 배정됩니다. 
-                    일반공급(30%)은 통장 납입 금액이 매우 높아야 당첨되지만, 특별공급은 <strong>조건과 전략</strong>만으로 기회를 선점할 수 있습니다.
-                </p>
+    <!-- ============================================== -->
+    <!-- MODULE A: SAGE ANALYZER (ORIGINAL WARM DESIGN) -->
+    <!-- ============================================== -->
+    <div id="module-analyzer" class="module-view block animate-fade-in">
+        <!-- Module A Navigation -->
+        <nav class="bg-sage-primary/95 backdrop-blur-sm text-white sticky top-[65px] z-[90] shadow-md">
+            <div class="max-w-6xl mx-auto px-4 py-3 flex justify-center space-x-6 text-sm font-medium">
+                <a href="#sage-strategy" class="hover:text-sage-accent transition">핵심 전략</a>
+                <a href="#sage-qualifications" class="hover:text-sage-accent transition">자격 요건</a>
+                <a href="#sage-special-supply" class="hover:text-sage-accent transition">특별공급 분석</a>
+                <a href="#sage-shinhuita" class="hover:text-sage-accent transition">신혼희망타운</a>
             </div>
+        </nav>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-                <div class="bg-white rounded-xl p-6 card-shadow border border-gray-100">
-                    <h3 class="text-lg font-semibold text-center mb-4 text-primary">공공분양 공급 비율</h3>
-                    <div class="chart-container">
-                        <canvas id="supplyChart"></canvas>
+        <header class="py-16 px-4 text-center">
+            <div class="max-w-4xl mx-auto">
+                <span class="inline-block px-4 py-1 bg-sage-accent/10 text-sage-accent rounded-full text-xs font-bold mb-4 italic">Public Housing Strategy v2.0</span>
+                <h1 class="text-3xl md:text-5xl font-bold mb-6 text-sage-primary leading-[1.3]">공공분양 & 신희타<br/>당첨 확률 극대화 전략</h1>
+                <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">복잡한 청약 자격과 가점 계산, <strong>단 한 페이지</strong>로 스마트하게 분석하십시오.</p>
+            </div>
+        </header>
+
+        <main class="max-w-6xl mx-auto px-4 py-8 space-y-24">
+            <!-- Section 1: Strategy -->
+            <section id="sage-strategy" class="scroll-mt-32">
+                <div class="grid md:grid-cols-2 gap-10 items-center bg-white/60 backdrop-blur-lg p-10 rounded-[2.5rem] shadow-xl border border-white/50">
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-bold text-sage-secondary flex items-center gap-3">🎯 특별공급 집중 전략</h3>
+                        <p class="text-gray-600 leading-relaxed text-lg">공공분양은 <strong>특별공급 물량이 전체의 80%</strong>를 차지합니다. 일반공급(20%)보다 훨씬 유리한 기회입니다.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="chart-container"><canvas id="sage-supplyRatioChart"></canvas></div>
                     </div>
                 </div>
-                <div class="flex flex-col justify-center space-y-4">
-                    <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-primary shadow-sm">
-                        <h4 class="font-bold text-primary mb-2">💡 핵심 조언</h4>
-                        <p class="text-gray-700 text-sm leading-loose">
-                            "배점표를 꼼꼼히 분석하고 미리 준비하는 사람이 당첨됩니다. 단순히 자격만 갖추는 것보다 <strong>가점 1~2점</strong>을 더 채우기 위한 장기 전략이 필수입니다."
-                        </p>
+            </section>
+
+            <!-- Section 2: Qualifications -->
+            <section id="sage-qualifications" class="scroll-mt-32">
+                <div class="bg-sage-secondary/5 rounded-[3rem] p-10 border border-sage-secondary/10 backdrop-blur-sm">
+                    <h2 class="text-3xl font-bold text-sage-secondary mb-10 flex items-center gap-3">✅ 기본 자격 요건 체크리스트</h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="bg-white/90 p-8 rounded-2xl shadow-lg border border-white"><div class="text-4xl mb-6">📘</div><h3 class="font-bold text-xl mb-4 text-sage-primary">청약 통장</h3><p class="text-sm text-gray-500">24개월 이상 납입 실적이 1순위의 필수 요건입니다.</p></div>
+                        <div class="bg-white/90 p-8 rounded-2xl shadow-lg border border-white"><div class="text-4xl mb-6">🏠</div><h3 class="font-bold text-xl mb-4 text-sage-primary">무주택 & 세대주</h3><p class="text-sm text-gray-500">공공분양은 무주택 세대 구성원이 기본입니다.</p></div>
+                        <div class="bg-white/90 p-8 rounded-2xl shadow-lg border border-white"><div class="text-4xl mb-6">💰</div><h3 class="font-bold text-xl mb-4 text-sage-primary">자산 및 소득</h3><p class="text-sm text-gray-500">유형별 소득 및 자산 한도를 반드시 확인하세요.</p></div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- SECTION 2: BASIC QUALIFICATIONS (Restored) -->
-        <section id="qualifications" class="tab-content hidden animate-fade-in">
-            <div class="mb-8">
-                <h2 class="text-2xl font-bold text-gray-800 mb-2">기본 자격 요건 체크리스트</h2>
-                <p class="text-gray-600">청약 신청을 위한 최소한의 허들입니다. 하나라도 미달되면 부적격 탈락합니다.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all">
-                    <div class="text-4xl mb-6">📘</div>
-                    <h3 class="font-bold text-xl mb-4 text-primary">청약 통장</h3>
-                    <p class="text-sm text-gray-500 leading-relaxed">
-                        납입 횟수가 핵심입니다. 24개월 이상, 24회 이상 납입을 미리 준비하여 1순위를 확보하세요. (공공분양은 인정금액 중심)
-                    </p>
-                </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all">
-                    <div class="text-4xl mb-6">🏠</div>
-                    <h3 class="font-bold text-xl mb-4 text-primary">무주택 & 세대주</h3>
-                    <p class="text-sm text-gray-500 leading-relaxed">
-                        공공분양은 세대원 전원 무주택이 기본입니다. 유형에 따라 세대주 요건이 필수일 수 있습니다. (특히 생애최초/노부모)
-                    </p>
-                </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all">
-                    <div class="text-4xl mb-6">💰</div>
-                    <h3 class="font-bold text-xl mb-4 text-primary">자산 및 소득</h3>
-                    <p class="text-sm text-gray-500 leading-relaxed">
-                        부동산 2.15억, 자동차 3.7천만원 이하 기준을 준수해야 하며, 신생아 특례시 기준이 크게 완화됩니다.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 3: STRATEGY SIMULATOR -->
-        <section id="strategies" class="tab-content hidden animate-fade-in">
-            <div class="mb-8">
-                <h2 class="text-2xl font-bold text-gray-800 mb-2">전략 시뮬레이터</h2>
-                <p class="text-gray-600">유형별 핵심 가점을 시뮬레이션하고 고득점 필승 전략을 확인하세요.</p>
-            </div>
-            <div class="flex space-x-2 mb-6 bg-gray-100 p-1 rounded-lg w-full md:w-fit">
-                <button id="btn-multi" class="strat-btn active-strat flex-1 py-2 px-6 rounded-md text-sm font-bold transition-all">👨‍👩‍👧‍👦 다자녀</button>
-                <button id="btn-newlywed" class="strat-btn flex-1 py-2 px-6 rounded-md text-sm font-bold transition-all text-gray-500">💍 신혼부부</button>
-                <button id="btn-newborn" class="strat-btn flex-1 py-2 px-6 rounded-md text-sm font-bold transition-all text-gray-500">👶 신생아</button>
-            </div>
-            <div id="strat-multi" class="strategy-detail block">
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div class="lg:col-span-2 bg-white rounded-xl p-8 card-shadow border border-gray-100">
-                        <div class="flex justify-between items-center mb-8">
-                            <h3 class="font-bold text-xl text-gray-800">다자녀 가점 (100점 만점)</h3>
-                            <span id="multi-score-display" class="text-4xl font-black text-primary">40점</span>
+            <!-- Section 3: Shinhuita Simulator -->
+            <section id="sage-shinhuita" class="scroll-mt-32 pb-20">
+                <div class="bg-white/80 backdrop-blur-2xl rounded-[4rem] shadow-2xl border border-white/50 overflow-hidden">
+                    <div class="bg-sage-primary p-12 text-white text-center"><h2 class="text-3xl font-bold mb-2">🏘️ 신혼희망타운 수익 공유 시뮬레이션</h2><p class="opacity-70 text-sm">자녀 수와 대출 비율에 따른 미래 가치를 설계하세요.</p></div>
+                    <div class="p-10 md:p-16 grid md:grid-cols-2 gap-16 items-center">
+                        <div class="space-y-10">
+                            <div><label class="block text-xs font-bold text-gray-400 mb-5 uppercase tracking-widest">Number of Children</label><div class="flex gap-4"><label class="flex-1 cursor-pointer"><input type="radio" name="sage-st-kids" value="0" class="hidden peer st-calc-sage"><div class="p-4 text-center border-2 border-gray-100 rounded-2xl peer-checked:bg-sage-primary peer-checked:text-white transition-all text-sm font-bold shadow-sm">없음</div></label><label class="flex-1 cursor-pointer"><input type="radio" name="sage-st-kids" value="1" class="hidden peer st-calc-sage"><div class="p-4 text-center border-2 border-gray-100 rounded-2xl peer-checked:bg-sage-primary peer-checked:text-white transition-all text-sm font-bold shadow-sm">1명</div></label><label class="flex-1 cursor-pointer"><input type="radio" name="sage-st-kids" value="2" checked class="hidden peer st-calc-sage"><div class="p-4 text-center border-2 border-gray-100 rounded-2xl peer-checked:bg-sage-primary peer-checked:text-white transition-all text-sm font-bold shadow-sm">2명↑</div></label></div></div>
+                            <div class="space-y-4"><label class="flex justify-between text-xs font-bold text-gray-400 uppercase tracking-widest">LTV Ratio <span id="sage-st-ltv-val" class="text-sage-accent text-lg">70%</span></label><input type="range" id="sage-st-ltv" min="30" max="70" step="10" value="70" class="w-full h-2 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-sage-accent st-calc-sage"></div>
                         </div>
-                        <div class="space-y-6">
-                            <div>
-                                <label class="block text-sm font-bold text-gray-500 mb-2 uppercase tracking-widest">미성년 자녀 수</label>
-                                <select id="multi-kids" class="w-full p-3 border-none bg-gray-50 rounded-xl focus:ring-2 ring-primary"><option value="25">2명 (25점)</option><option value="30">3명 (30점)</option><option value="35">4명 이상 (35점)</option></select>
-                            </div>
-                            <div class="p-5 bg-yellow-50 rounded-2xl border border-yellow-100">
-                                <div class="flex items-center justify-between">
-                                    <label class="font-bold text-gray-800">3세대 동거 가점 (5점)</label>
-                                    <input type="checkbox" id="multi-3gen" class="w-6 h-6 text-primary rounded-md">
-                                </div>
+                        <div class="flex flex-col items-center">
+                            <div class="relative w-64 h-64 flex items-center justify-center">
+                                <svg class="w-full h-full transform -rotate-90"><circle cx="128" cy="128" r="110" stroke="#F3F4F6" stroke-width="20" fill="transparent" /><circle id="sage-profit-ring" cx="128" cy="128" r="110" stroke="#D97706" stroke-width="20" fill="transparent" stroke-dasharray="690" stroke-dashoffset="690" class="transition-all duration-1000" /></svg>
+                                <div class="absolute inset-0 flex flex-col items-center justify-center"><span id="sage-share-percent" class="text-5xl font-bold text-sage-primary">30%</span><span class="text-xs text-gray-400 font-bold mt-2">수익 공유</span></div>
                             </div>
                         </div>
                     </div>
-                    <div class="bg-primary text-white rounded-xl p-8 shadow-xl">
-                        <h4 class="font-bold text-xl mb-6">🎯 필승 포인트</h4>
-                        <p class="text-sm text-white/60 leading-relaxed">목표 점수 80점 이상을 확보하는 것이 안정권입니다. 수도권 거주자는 거주지 이전에 따른 기간 손실이 없습니다.</p>
-                    </div>
                 </div>
-            </div>
-            <div id="strat-newlywed" class="strategy-detail hidden">
-                <div class="bg-white rounded-xl p-8 card-shadow border border-gray-100"><h3 class="font-bold text-xl text-gray-800 mb-6">신혼부부 가점 포인트</h3><p class="text-sm text-gray-600">혼인 3년 이내 및 자녀 수가 당락의 핵심입니다.</p></div>
-            </div>
-            <div id="strat-newborn" class="strategy-detail hidden">
-                <div class="bg-emerald-50 rounded-[2.5rem] p-10 border border-emerald-100 text-center"><h3 class="text-2xl font-bold text-emerald-800">Newborn Cheat Key</h3><p class="text-emerald-900 mt-4 text-lg">최근 2년 내 출산 가구는 가장 유리한 전형입니다.</p></div>
-            </div>
-        </section>
+            </section>
+        </main>
+    </div>
 
-        <!-- SECTION 4: SHIN-HUI-TA SIMULATOR (Restored) -->
-        <section id="shinhuita" class="tab-content hidden animate-fade-in">
-            <div class="bg-white rounded-[3rem] shadow-2xl border border-gray-100 overflow-hidden">
-                <div class="bg-primary p-12 text-white text-center">
-                    <h2 class="text-3xl font-bold mb-2">🏘️ 신혼희망타운 수익 공유 시뮬레이터</h2>
-                    <p class="opacity-70">수익 공유형 모기지의 구조를 시각적으로 이해하세요.</p>
-                </div>
-                <div class="p-12 md:p-16 grid md:grid-cols-2 gap-16 items-center">
-                    <div class="space-y-10">
-                        <div>
-                            <label class="block text-xs font-bold text-gray-400 mb-4 uppercase tracking-widest">자녀 수 선택</label>
-                            <div class="flex gap-4">
-                                <label class="flex-1 cursor-pointer"><input type="radio" name="st-kids" value="0" class="hidden peer st-calc"><div class="p-4 text-center border-2 border-gray-100 rounded-2xl peer-checked:bg-primary peer-checked:text-white transition-all text-sm font-bold shadow-sm">없음</div></label>
-                                <label class="flex-1 cursor-pointer"><input type="radio" name="st-kids" value="1" class="hidden peer st-calc"><div class="p-4 text-center border-2 border-gray-100 rounded-2xl peer-checked:bg-primary peer-checked:text-white transition-all text-sm font-bold shadow-sm">1명</div></label>
-                                <label class="flex-1 cursor-pointer"><input type="radio" name="st-kids" value="2" checked class="hidden peer st-calc"><div class="p-4 text-center border-2 border-gray-100 rounded-2xl peer-checked:bg-primary peer-checked:text-white transition-all text-sm font-bold shadow-sm">2명↑</div></label>
-                            </div>
-                        </div>
-                        <div class="space-y-4">
-                            <label class="flex justify-between text-xs font-bold text-gray-400 uppercase tracking-widest">대출 비율 (LTV) <span id="st-ltv-val" class="text-secondary text-lg">70%</span></label>
-                            <input type="range" id="st-ltv" min="30" max="70" step="10" value="70" class="w-full h-2 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-secondary st-calc">
+    <!-- ============================================== -->
+    <!-- MODULE B: BLUE STRATEGY CENTER (NEW SNIPPET) -->
+    <!-- ============================================== -->
+    <div id="module-center" class="module-view hidden animate-fade-in">
+        <!-- Module B Navigation -->
+        <nav class="bg-white shadow-sm sticky top-[65px] md:top-[73px] z-[90] overflow-x-auto border-b border-gray-100">
+            <div class="max-w-6xl mx-auto px-4">
+                <ul class="flex space-x-8 text-sm md:text-base whitespace-nowrap py-3">
+                    <li><button id="nav-center-dashboard" class="center-nav-item center-nav-active pb-1 transition-colors">📊 배정 비율</button></li>
+                    <li><button id="nav-center-strategies" class="center-nav-item pb-1 text-gray-400 hover:text-blue-primary transition-colors">🎯 가점 시뮬레이터</button></li>
+                    <li><button id="nav-center-pitfalls" class="center-nav-item pb-1 text-gray-400 hover:text-blue-primary transition-colors">⚠️ 거주 요건 함정</button></li>
+                    <li><button id="nav-center-secrets" class="center-nav-item pb-1 text-gray-400 hover:text-blue-primary transition-colors">🔓 예비입주자 비밀</button></li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="max-w-6xl mx-auto px-4 py-8 space-y-20">
+            <!-- Sub-section: Special Supply Dashboard -->
+            <section id="center-dashboard" class="center-tab-content block">
+                <div class="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-xl border border-gray-100 grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold text-blue-primary mb-6">청약 특별공급 전략</h2>
+                        <p class="text-gray-600 leading-relaxed mb-8 italic">"당첨은 가점 1점의 차이에서 결정됩니다. 공공분양의 70% 물량인 특별공급에 모든 전략을 집중하세요."</p>
+                        <div class="bg-blue-50 p-6 rounded-2xl border-l-8 border-blue-primary">
+                            <p class="font-bold text-blue-primary mb-2">📢 2026년 청약 포인트</p>
+                            <p class="text-sm text-gray-600">신생아 특별공급 비중 확대와 소득 구간별 세부 당첨 전략이 필수적입니다.</p>
                         </div>
                     </div>
                     <div class="flex flex-col items-center">
-                        <div class="relative w-64 h-64 flex items-center justify-center">
-                            <svg class="w-full h-full transform -rotate-90">
-                                <circle cx="128" cy="128" r="110" stroke="#F3F4F6" stroke-width="20" fill="transparent" />
-                                <circle id="profit-ring" cx="128" cy="128" r="110" stroke="#F59E0B" stroke-width="20" fill="transparent" stroke-dasharray="690" stroke-dashoffset="690" class="transition-all duration-1000" />
-                            </svg>
-                            <div class="absolute inset-0 flex flex-col items-center justify-center">
-                                <span id="share-percent" class="text-5xl font-bold text-primary">30%</span>
-                                <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-2">수익 공유 비율</span>
+                        <div class="chart-container"><canvas id="blue-supplyChart"></canvas></div>
+                        <p class="text-xs text-gray-400 mt-6 tracking-widest uppercase">Special Supply vs General Supply</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sub-section: Strategy Simulator (Blue) -->
+            <section id="center-strategies" class="center-tab-content hidden">
+                <div class="flex space-x-2 mb-8 bg-gray-100 p-1 rounded-2xl w-full md:w-fit">
+                    <button id="blue-btn-multi" class="blue-strat-btn blue-active-strat px-8 py-3 rounded-xl text-sm font-bold transition-all">👨‍👩‍👧‍👦 다자녀</button>
+                    <button id="blue-btn-newlywed" class="blue-strat-btn px-8 py-3 rounded-xl text-sm font-bold transition-all text-gray-500">💍 신혼부부</button>
+                    <button id="blue-btn-newborn" class="blue-strat-btn px-8 py-3 rounded-xl text-sm font-bold transition-all text-gray-500">👶 신생아</button>
+                </div>
+                
+                <div id="blue-strat-multi" class="blue-strat-detail block">
+                    <div class="grid lg:grid-cols-3 gap-8">
+                        <div class="lg:col-span-2 bg-white rounded-[2.5rem] p-10 shadow-xl border border-gray-50">
+                            <div class="flex justify-between items-center mb-8">
+                                <h3 class="font-bold text-2xl text-blue-primary">다자녀 가점 (100점 만점)</h3>
+                                <span id="blue-multi-score-display" class="text-5xl font-black text-blue-primary">40점</span>
+                            </div>
+                            <div class="space-y-6">
+                                <div><label class="block text-xs font-bold text-gray-400 mb-3 uppercase tracking-widest">미성년 자녀 수</label><select id="blue-multi-kids" class="w-full p-4 border-none bg-gray-50 rounded-2xl focus:ring-2 ring-blue-primary"><option value="25">2명 (25점)</option><option value="30">3명 (30점)</option><option value="35">4명 이상 (35점)</option></select></div>
+                                <div class="flex items-center justify-between p-6 bg-blue-50 rounded-2xl border border-blue-100">
+                                    <label class="font-bold text-blue-primary">3세대 동거 가점 (5점)</label>
+                                    <input type="checkbox" id="blue-multi-3gen" class="w-8 h-8 text-blue-primary rounded-lg">
+                                </div>
                             </div>
                         </div>
-                        <div id="share-comment" class="mt-10 font-bold text-primary text-center">추천하는 전략입니다.</div>
+                        <div class="bg-blue-primary text-white p-10 rounded-[2.5rem] shadow-2xl flex flex-col justify-center">
+                            <h4 class="font-bold text-xl mb-6">💡 Insight</h4>
+                            <p class="text-sm leading-loose opacity-70">80점 이상이 안정권이며, 서울 거주자도 수도권 공공분양의 거주 기간 합산이 가능합니다.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- SECTION 5: PITFALLS -->
-        <section id="pitfalls" class="tab-content hidden animate-fade-in">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-red-50 rounded-2xl p-10 border border-red-100 shadow-lg text-center">
-                    <h3 class="font-bold text-2xl text-red-900 mb-6">🏠 주택 건설 지역 (당해)</h3>
-                    <p class="text-sm text-red-800 leading-loose">신혼부부/신생아 전형은 오직 해당 시/군 거주만 인정됩니다. 하남 거주자가 남양주 신청 시 당해 점수는 0점입니다.</p>
+                <!-- Other Blue Sub-tabs implemented in main.js toggle -->
+                <div id="blue-strat-newlywed" class="blue-strat-detail hidden">
+                    <div class="bg-white p-12 rounded-[2.5rem] shadow-xl text-center"><h3 class="text-2xl font-bold mb-4">신혼부부 전략 센터</h3><p class="text-gray-500">자녀 수와 혼인 기간 3년 이내가 당첨의 핵심 지표입니다.</p></div>
                 </div>
-                <div class="bg-blue-50 rounded-2xl p-10 border border-blue-100 shadow-lg text-center">
-                    <h3 class="font-bold text-2xl text-blue-900 mb-6">🗺️ 수도권 권역 인정</h3>
-                    <p class="text-sm text-blue-800 leading-loose">다자녀 특별공급은 수도권 전체 거주 기간이 합산됩니다. 유연하게 거주지를 옮겨도 기간 가점이 유지됩니다.</p>
+                <div id="blue-strat-newborn" class="blue-strat-detail hidden">
+                    <div class="bg-blue-success/10 p-12 rounded-[2.5rem] shadow-inner text-center border border-blue-success/20"><h3 class="text-2xl font-bold text-blue-success mb-4">신생아 특별공급 (강력 추천)</h3><p class="text-emerald-800">최근 2년 내 출산 가구를 위한 압도적인 당첨 확률 보장 전형입니다.</p></div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- SECTION 6: SECRETS -->
-        <section id="secrets" class="tab-content hidden animate-fade-in">
-            <div class="bg-white rounded-[3rem] p-12 md:p-20 shadow-2xl text-center">
-                <h2 class="text-3xl font-bold text-gray-800 mb-10">🔓 예비입주자의 비밀: 100% 추첨</h2>
-                <div class="flex flex-col md:flex-row justify-center items-center gap-12">
-                    <div class="w-48 h-48 bg-primary text-white rounded-full flex items-center justify-center text-5xl shadow-2xl animate-bounce">🎲</div>
-                    <div class="text-left space-y-4 max-w-md">
-                        <p class="text-lg font-bold text-primary">점수가 낮아도 포기하지 마세요!</p>
-                        <p class="text-sm text-gray-600 leading-relaxed">특별공급 예비입주자(500%)는 점수 순위와 상관없이 <strong>추첨</strong>으로 선정됩니다. 기타 지역 거주자라도 예비 1번을 뽑을 확률은 가점 1등과 동일합니다.</p>
+            <!-- Sub-section: Pitfalls (Blue) -->
+            <section id="center-pitfalls" class="center-tab-content hidden">
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div class="bg-red-50 p-10 rounded-[3rem] border border-red-100 shadow-xl relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-red-500 text-white text-[10px] font-bold px-4 py-2 rounded-bl-3xl tracking-widest">STRICT</div>
+                        <h3 class="text-2xl font-bold text-red-900 mb-6 italic">Residence Area</h3>
+                        <p class="text-gray-600 leading-loose">신혼부부/신생아 전형은 오직 <strong>해당 주택 건설 시/군</strong> 거주자만 가점을 받습니다. 남양주 지원 시 서울 거주자는 거주 점수 0점입니다.</p>
+                    </div>
+                    <div class="bg-blue-50 p-10 rounded-[3rem] border border-blue-100 shadow-xl relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-blue-500 text-white text-[10px] font-bold px-4 py-2 rounded-bl-3xl tracking-widest">FLEXIBLE</div>
+                        <h3 class="text-2xl font-bold text-blue-900 mb-6 italic">Metro Wide</h3>
+                        <p class="text-gray-600 leading-loose">다자녀 특공은 <strong>수도권 전체(서울/경기/인천)</strong> 거주 기간이 합산됩니다. 거주지를 옮겨도 기간 가점이 유지되는 유연한 전략이 가능합니다.</p>
                     </div>
                 </div>
+            </section>
+
+            <!-- Sub-section: Secrets (Blue) -->
+            <section id="center-secrets" class="center-tab-content hidden">
+                <div class="bg-white rounded-[4rem] p-16 shadow-2xl text-center border border-gray-50">
+                    <h2 class="text-4xl font-bold text-blue-primary mb-12">예비입주자의 비밀: 100% 추첨</h2>
+                    <div class="flex flex-col md:flex-row justify-center items-center gap-16">
+                        <div class="w-56 h-56 bg-blue-primary text-white rounded-full flex items-center justify-center text-8xl shadow-3xl animate-bounce">🎲</div>
+                        <div class="text-left space-y-6 max-w-lg">
+                            <p class="text-xl font-bold text-blue-primary">점수가 낮아도 끝까지 포기하지 마세요!</p>
+                            <p class="text-gray-500 leading-relaxed">특별공급의 예비입주자(500%) 선정은 <strong>가점과 상관없이 순수 추첨</strong>으로 결정됩니다. 기타 지역 거주자도 예비 1번을 뽑아 내 집 마련에 성공할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Common Footer -->
+    <footer class="bg-sage-primary text-white py-16 px-6 mt-auto">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
+            <div class="space-y-4">
+                <p class="font-bold text-2xl tracking-tight">Housing Strategy Portal</p>
+                <p class="text-white/30 text-xs uppercase tracking-[0.3em]">Advanced Real Estate Analysis System</p>
             </div>
-        </section>
-
-    </main>
-
-    <footer class="bg-primary text-white py-12 px-4 mt-auto text-center">
-        <p class="font-bold text-lg mb-2">청약 특별공급 & 신희타 통합 전략 센터</p>
-        <p class="text-white/40 text-[10px] uppercase tracking-widest">본 자료는 참고용이며 최종 당첨 여부는 LH 공식 공고를 확인하십시오.</p>
+            <p class="text-white/40 text-xs leading-loose max-w-sm">
+                본 포털은 사용자의 전략 수립을 위한 데이터 시뮬레이션을 제공합니다. 최종 청약 자격 및 당첨 여부는 LH 공식 모집 공고를 통해 확인하십시오.
+            </p>
+        </div>
     </footer>
 </body>
 </html>
