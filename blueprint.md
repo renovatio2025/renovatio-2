@@ -1,30 +1,25 @@
-# Public Housing & Shin-hui-ta Strategy Analyzer Blueprint
+# Public Housing & Shin-hui-ta Strategic Analyzer - Premium Redesign
 
 ## Overview
-A strategic analysis tool for South Korea's public housing (3rd New Cities) and Shin-hui-ta (Newlywed Hope Town) subscription systems. It helps users understand supply ratios, check qualifications, and calculate scores for special supplies.
+A premium, highly interactive strategic analysis tool with a "Warm Modern" aesthetic. Inspired by high-end editorial design, featuring soft textures, elegant typography, and professional visualizations.
 
-## Features
-- **Supply Ratio Visualization:** Doughnut chart showing the 80:20 Special/General supply split.
-- **Qualification Checklist:** Interactive breakdown of savings, housing status, and asset limits.
-- **Special Supply Calculators:** Tabbed interface with custom calculators for:
-    - Multi-child Families (100pt scale)
-    - Newlyweds (13pt scale)
-    - First-life Buyers (Qualification summary)
-    - Newborn Special Supply (10pt scale)
-- **Shin-hui-ta Simulator:** Profit-sharing mortgage simulator with LTV, duration, and child count variables.
+## Visual Identity (Nanobanana Style)
+- **Palette:** Soft Cream (#FCFAF7), Sage Green (#556B2F), Deep Navy (#1A252F), and Muted Gold (#C5A059).
+- **Typography:** Serif for headings (Playfair Display) + Clean Sans-serif for body (Noto Sans KR).
+- **Imagery:** High-quality, warm-toned architectural photography and 3D house icons.
+- **UI Elements:** 
+    - Floating glass cards with subtle border gradients.
+    - Soft, multi-layered shadows for depth.
+    - Micro-interactions and scroll-reveal animations.
 
-## Technical Stack
-- **Styling:** Tailwind CSS (for layout) + Custom Vanilla CSS (for components).
-- **Visualization:** Chart.js for data representation.
-- **Interactivity:** Vanilla JavaScript for calculation logic and tab management.
-- **Typography:** Noto Sans KR for professional readability.
-
-## Design
-- **Palette:** Warm Neutrals & Sage Green (#F9F9F7 background, Navy primary, Amber accent).
-- **Feel:** Trustworthy, analytical, and modern.
-- **Responsiveness:** Mobile-first approach with optimized chart containers.
+## Key Design Updates
+1. **Premium Hero Section:** Full-bleed layout with a high-quality architectural image and a compelling value proposition.
+2. **Visual Storytelling:** Use of icons and progress indicators to guide the user through the complex subscription process.
+3. **Enhanced Calculators:** Neumorphic/Glassmorphic input fields for a tactile feel.
+4. **Interactive Simulation:** More visual feedback in the Shin-hui-ta simulator with dynamic color-coded rings.
 
 ## Implementation Steps
-1. **Update index.html:** Implement the structure and link dependencies.
-2. **Update style.css:** Add custom slider and tab styles.
-3. **Update main.js:** Implement calculation logic and Chart.js initialization.
+1. **Assets:** Integrate premium fonts and placeholder images from high-quality sources (Unsplash).
+2. **Layout:** Rebuild the grid for better whitespace and "breathability."
+3. **Interactivity:** Add AOS (Animate On Scroll) or custom CSS transitions.
+4. **Final Polish:** Ensure mobile responsiveness and cross-browser consistency.
