@@ -1,28 +1,17 @@
-# Cheongyak Strategy Center Blueprint
+# Integrated Cheongyak Strategy & Shin-hui-ta Center Blueprint
 
 ## Overview
-A comprehensive strategic guide and simulator for Korea's Special Supply (Special Priority) housing subscriptions. It focuses on maximizing winning chances by visualizing complex rules and providing interactive tools.
+A comprehensive integration of the "Special Supply Strategy Center" and the "Shin-hui-ta Strategy Analyzer." This version combines strategic data visualization with interactive calculators and mortgage simulators.
 
-## Key Sections
-1. **Dashboard Overview:** Visualizes the 70% (Special) vs 30% (General) supply rule in public housing.
-2. **Strategy Simulator:** 
-    - **Multi-child:** 100pt scale calculator with focus on 3-generation cohabitation.
-    - **Newlywed:** 13pt scale breakdown with "Marriage duration vs Children" strategy.
-    - **Newborn:** Highlighting the new "Cheat Key" for recent parents.
-3. **The Pitfall Zone:** Side-by-side comparison of strict vs. flexible residence requirements.
-4. **The Hidden Opportunity:** Explaining the 100% random draw mechanism for Reserved Candidates.
+## New Integrated Structure (Tabs)
+1. **📊 대시보드 (Dashboard):** Supply ratios (70:30) and market trends.
+2. **✅ 자격 요건 (Qualifications):** Basic requirements (Savings, Housing, Assets). *[Added from previous code]*
+3. **🎯 전략 시뮬레이터 (Strategies):** Multi-child, Newlywed, and Newborn score calculators.
+4. **🏘️ 신혼희망타운 (Shin-hui-ta):** Profit-sharing mortgage simulator (LTV/Kids/Years). *[Added from previous code]*
+5. **⚠️ 거주 요건 함정 (Pitfalls):** Detailed residence area logic.
+6. **🔓 예비입주자의 비밀 (Secrets):** 100% random draw mechanism for reserved candidates.
 
-## Technical Stack
-- **Styling:** Tailwind CSS with a 'Strategic Calm' palette (Blue 900, Amber 500, Emerald 500).
-- **Visualization:** Chart.js for supply ratio analysis.
-- **Logic:** Vanilla JavaScript for dynamic score calculation and tab management.
-
-## Design Philosophy
-- **Professional & Trustworthy:** High-readability fonts (Noto Sans KR) and clean card-based layouts.
-- **Action-Oriented:** Moves users from understanding (Dashboard) to experimentation (Simulator) to caution (Pitfalls).
-- **Mobile Optimized:** Responsive navigation and scrollable tab areas.
-
-## Implementation Steps
-1. **Update index.html:** Implement the multi-tab structure and Tailwind layout.
-2. **Update style.css:** Add custom scrollbars, card shadows, and animations.
-3. **Update main.js:** Implement calculation logic, tab switching, and Chart.js initialization.
+## Technical Updates
+- **index.html:** Added new navigation items and merged section content.
+- **style.css:** Maintained professional "Strategic Calm" theme while ensuring all merged elements fit the aesthetic.
+- **main.js:** Integrated the profit-sharing calculation logic and updated tab management.

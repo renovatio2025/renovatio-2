@@ -3,10 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initTabNavigation();
     initStrategySimulation();
     initScoreCalculations();
+    initShinhuitaSimulator();
 });
 
 /**
- * Supply Ratio Chart - Clean Professional Style
+ * Supply Ratio Chart
  */
 function initSupplyChart() {
     const canvas = document.getElementById('supplyChart');
@@ -47,12 +48,14 @@ function initSupplyChart() {
 }
 
 /**
- * Main Tab Navigation Logic
+ * Main Tab Navigation
  */
 function initTabNavigation() {
     const tabs = {
         'nav-dashboard': 'dashboard',
+        'nav-qualifications': 'qualifications',
         'nav-strategies': 'strategies',
+        'nav-shinhuita': 'shinhuita',
         'nav-pitfalls': 'pitfalls',
         'nav-secrets': 'secrets'
     };
@@ -62,7 +65,6 @@ function initTabNavigation() {
         if (!btn) return;
 
         btn.addEventListener('click', () => {
-            // UI Update
             document.querySelectorAll('.nav-item').forEach(b => {
                 b.classList.remove('nav-active', 'text-primary');
                 b.classList.add('text-gray-500');
@@ -70,7 +72,6 @@ function initTabNavigation() {
             btn.classList.add('nav-active', 'text-primary');
             btn.classList.remove('text-gray-500');
 
-            // Content Update
             document.querySelectorAll('.tab-content').forEach(c => {
                 c.classList.add('hidden');
                 c.classList.remove('block');
@@ -83,7 +84,7 @@ function initTabNavigation() {
 }
 
 /**
- * Strategy Sub-tabs Switching
+ * Strategy Sub-tabs
  */
 function initStrategySimulation() {
     const stratButtons = {
@@ -97,7 +98,6 @@ function initStrategySimulation() {
         if (!btn) return;
 
         btn.addEventListener('click', () => {
-            // UI Update
             document.querySelectorAll('.strat-btn').forEach(b => {
                 b.classList.remove('active-strat');
                 b.classList.add('text-gray-500');
@@ -105,7 +105,6 @@ function initStrategySimulation() {
             btn.classList.add('active-strat');
             btn.classList.remove('text-gray-500');
 
-            // Content Update
             document.querySelectorAll('.strategy-detail').forEach(c => {
                 c.classList.add('hidden');
                 c.classList.remove('block');
@@ -118,42 +117,63 @@ function initStrategySimulation() {
 }
 
 /**
- * Score Calculators for Simulator
+ * Multi-child Score Calc
  */
 function initScoreCalculations() {
-    // Multi-child Calculator
     const mcInputs = ['multi-kids', 'multi-babies', 'multi-3gen'];
     mcInputs.forEach(id => {
         const el = document.getElementById(id);
-        if (el) {
-            el.addEventListener('change', calcMultiScore);
-        }
+        if (el) el.addEventListener('change', calcMultiScore);
     });
-
-    // Initial calculation
     calcMultiScore();
 }
 
 function calcMultiScore() {
     const kids = parseInt(document.getElementById('multi-kids').value);
-    const babies = parseInt(document.getElementById('multi-babies').value);
     const is3Gen = document.getElementById('multi-3gen').checked;
-    
-    // Base score (Res/House/Savings) assumed max 40 for serious candidates
-    const baseScore = 40; 
-    const threeGenScore = is3Gen ? 5 : 0;
+    const total = 40 + kids + (is3Gen ? 5 : 0);
+    document.getElementById('multi-score-display').innerText = total + "점";
+}
 
-    const total = baseScore + kids + babies + threeGenScore;
-    
-    const displayEl = document.getElementById('multi-score-display');
-    displayEl.innerText = total + "점";
+/**
+ * Shin-hui-ta Profit Share Simulator
+ */
+function initShinhuitaSimulator() {
+    document.querySelectorAll('.st-calc').forEach(el => {
+        el.addEventListener('input', updateProfitShare);
+    });
+    updateProfitShare();
+}
 
-    // Dynamic Styling based on score
-    if (total >= 80) {
-        displayEl.className = "text-4xl font-black text-emerald-600";
-    } else if (total >= 75) {
-        displayEl.className = "text-4xl font-black text-amber-600";
+function updateProfitShare() {
+    const ltv = parseInt(document.getElementById('st-ltv').value);
+    const kidsInput = document.querySelector('input[name="st-kids"]:checked');
+    const kids = kidsInput ? parseInt(kidsInput.value) : 2;
+
+    document.getElementById('st-ltv-val').innerText = ltv + "%";
+
+    let share = 50;
+    if (ltv <= 30) share = 10;
+    else if (ltv <= 50) share = 30;
+
+    const discount = kids >= 2 ? 20 : (kids === 1 ? 10 : 0);
+    share = Math.max(10, share - discount);
+
+    document.getElementById('share-percent').innerText = share + "%";
+    
+    // Ring Animation (Total 690 dasharray)
+    const visualPercent = share * 2; 
+    const offset = 690 - (690 * (visualPercent / 100));
+    const ring = document.getElementById('profit-ring');
+    ring.style.strokeDashoffset = offset;
+    ring.style.stroke = share > 30 ? '#EF4444' : '#F59E0B';
+
+    const comment = document.getElementById('share-comment');
+    if (share > 30) {
+        comment.innerText = "수익 반납 비율이 높음 (비추천)";
+        comment.style.color = "#EF4444";
     } else {
-        displayEl.className = "text-4xl font-black text-primary";
+        comment.innerText = "합리적인 자금 계획 (추천)";
+        comment.style.color = "#1E3A8A";
     }
 }
