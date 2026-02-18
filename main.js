@@ -1,61 +1,55 @@
 document.addEventListener('DOMContentLoaded', () => {
-    initGlobalNavigation();
-    
-    // Module A: Sage Analyzer Init
-    initSageModule();
-    
-    // Module B: Blue Center Init
-    initBlueModule();
+    initGlobalPaging();
+    initPage1Logic();
+    initPage2Logic();
 });
 
 /**
- * GLOBAL NAVIGATION: Switching between Modules
+ * GLOBAL PAGE SWITCHING
  */
-function initGlobalNavigation() {
-    const analyzerBtn = document.getElementById('global-nav-analyzer');
-    const centerBtn = document.getElementById('global-nav-center');
-    const analyzerMod = document.getElementById('module-analyzer');
-    const centerMod = document.getElementById('module-center');
+function initGlobalPaging() {
+    const nav1 = document.getElementById('nav-page-1');
+    const nav2 = document.getElementById('nav-page-2');
+    const page1 = document.getElementById('page-1');
+    const page2 = document.getElementById('page-2');
 
-    analyzerBtn.addEventListener('click', () => {
-        // UI
-        analyzerBtn.classList.add('active-global', 'border-sage-secondary', 'text-sage-secondary');
-        analyzerBtn.classList.remove('border-transparent', 'text-gray-500');
-        centerBtn.classList.remove('active-global', 'border-blue-primary', 'text-blue-primary');
-        centerBtn.classList.add('border-transparent', 'text-gray-500');
+    nav1.addEventListener('click', () => {
+        nav1.classList.add('active-page', 'font-bold', 'text-sage-primary', 'border-sage-primary');
+        nav1.classList.remove('text-gray-400', 'border-transparent');
+        nav2.classList.remove('active-page', 'font-bold', 'text-blue-primary', 'border-blue-primary');
+        nav2.classList.add('text-gray-400', 'border-transparent');
 
-        // Content
-        analyzerMod.classList.remove('hidden');
-        analyzerMod.classList.add('block');
-        centerMod.classList.add('hidden');
-        centerMod.classList.remove('block');
+        page1.classList.remove('hidden');
+        page1.classList.add('block');
+        page2.classList.add('hidden');
+        page2.classList.remove('block');
     });
 
-    centerBtn.addEventListener('click', () => {
-        // UI
-        centerBtn.classList.add('active-global', 'border-blue-primary', 'text-blue-primary');
-        centerBtn.classList.remove('border-transparent', 'text-gray-500');
-        analyzerBtn.classList.remove('active-global', 'border-sage-secondary', 'text-sage-secondary');
-        analyzerBtn.classList.add('border-transparent', 'text-gray-500');
+    nav2.addEventListener('click', () => {
+        nav2.classList.add('active-page', 'font-bold', 'text-blue-primary', 'border-blue-primary');
+        nav2.classList.remove('text-gray-400', 'border-transparent');
+        nav1.classList.remove('active-page', 'font-bold', 'text-sage-primary', 'border-sage-primary');
+        nav1.classList.add('text-gray-400', 'border-transparent');
 
-        // Content
-        centerMod.classList.remove('hidden');
-        centerMod.classList.add('block');
-        analyzerMod.classList.add('hidden');
-        analyzerMod.classList.remove('block');
+        page2.classList.remove('hidden');
+        page2.classList.add('block');
+        page1.classList.add('hidden');
+        page1.classList.remove('block');
     });
 }
 
 /**
- * MODULE A: SAGE ANALYZER LOGIC
+ * PAGE 1: SAGE ANALYZER LOGIC (FULL RESTORE)
  */
-function initSageModule() {
+function initPage1Logic() {
     initSageChart();
+    initSageTabs();
+    initSageCalculators();
     initSageShinhuita();
 }
 
 function initSageChart() {
-    const ctx = document.getElementById('sage-supplyRatioChart').getContext('2d');
+    const ctx = document.getElementById('sage-supplyChart').getContext('2d');
     new Chart(ctx, {
         type: 'doughnut',
         data: {
@@ -70,35 +64,72 @@ function initSageChart() {
     });
 }
 
-function initSageShinhuita() {
-    document.querySelectorAll('.st-calc-sage').forEach(el => {
-        el.addEventListener('input', updateSageProfitShare);
+function initSageTabs() {
+    const tabs = { 'sage-btn-multi': 'sage-tab-multi', 'sage-btn-newlywed': 'sage-tab-newlywed', 'sage-btn-newborn': 'sage-tab-newborn' };
+    Object.keys(tabs).forEach(id => {
+        document.getElementById(id).addEventListener('click', () => {
+            document.querySelectorAll('.sage-tab-btn').forEach(b => b.classList.remove('active', 'font-bold', 'border-sage-primary'));
+            document.getElementById(id).classList.add('active', 'font-bold');
+            document.querySelectorAll('.sage-tab-content').forEach(c => c.classList.add('hidden'));
+            document.getElementById(tabs[id]).classList.remove('hidden');
+        });
     });
+}
+
+function initSageCalculators() {
+    // Multi-child
+    document.querySelectorAll('.s-mc-calc').forEach(el => el.addEventListener('change', () => {
+        const kids = parseInt(document.getElementById('s-mc-kids').value);
+        const baby = parseInt(document.getElementById('s-mc-baby').value);
+        const nohouse = parseInt(document.getElementById('s-mc-nohouse').value);
+        const reside = parseInt(document.getElementById('s-mc-reside').value);
+        const bank = parseInt(document.getElementById('s-mc-bank').value);
+        document.getElementById('s-mc-result').innerText = (kids + baby + nohouse + reside + bank) + "점";
+    }));
+
+    // Newlywed
+    document.querySelectorAll('.s-nw-calc').forEach(el => el.addEventListener('change', () => {
+        const income = parseInt(document.getElementById('s-nw-income').value);
+        const kids = parseInt(document.getElementById('s-nw-kids').value);
+        const reside = parseInt(document.getElementById('s-nw-reside').value);
+        const bank = parseInt(document.getElementById('s-nw-bank').value);
+        const marry = parseInt(document.getElementById('s-nw-marry').value);
+        document.getElementById('s-nw-result').innerText = (income + kids + reside + bank + marry) + "점";
+    }));
+
+    // Newborn
+    document.querySelectorAll('.s-nb-calc').forEach(el => el.addEventListener('change', () => {
+        const income = parseInt(document.getElementById('s-nb-income').value);
+        const kids = parseInt(document.getElementById('s-nb-kids').value);
+        const reside = parseInt(document.getElementById('s-nb-reside').value);
+        const bank = parseInt(document.getElementById('s-nb-bank').value);
+        document.getElementById('s-nb-result').innerText = (income + kids + reside + bank) + "점";
+    }));
+}
+
+function initSageShinhuita() {
+    document.querySelectorAll('.s-st-calc').forEach(el => el.addEventListener('input', updateSageProfitShare));
     updateSageProfitShare();
 }
 
 function updateSageProfitShare() {
-    const ltv = parseInt(document.getElementById('sage-st-ltv').value);
-    const kids = parseInt(document.querySelector('input[name="sage-st-kids"]:checked').value);
-    document.getElementById('sage-st-ltv-val').innerText = ltv + "%";
-
+    const ltv = parseInt(document.getElementById('s-st-ltv').value);
+    const kids = parseInt(document.querySelector('input[name="s-st-kids"]:checked').value);
+    document.getElementById('s-st-ltv-val').innerText = ltv + "%";
     let share = 50;
     if (ltv <= 30) share = 10;
     else if (ltv <= 50) share = 30;
     share = Math.max(10, share - (kids >= 2 ? 20 : (kids === 1 ? 10 : 0)));
-
-    document.getElementById('sage-share-percent').innerText = share + "%";
-    const ring = document.getElementById('sage-profit-ring');
-    ring.style.strokeDashoffset = 690 - (690 * (share * 2 / 100));
+    document.getElementById('s-share-percent').innerText = share + "%";
+    document.getElementById('s-profit-ring').style.strokeDashoffset = 690 - (690 * (share * 2 / 100));
 }
 
 /**
- * MODULE B: BLUE CENTER LOGIC
+ * PAGE 2: BLUE CENTER LOGIC
  */
-function initBlueModule() {
+function initPage2Logic() {
     initBlueChart();
-    initBlueTabs();
-    initBlueCalculators();
+    initBlueSubTabs();
 }
 
 function initBlueChart() {
@@ -117,52 +148,14 @@ function initBlueChart() {
     });
 }
 
-function initBlueTabs() {
-    // Sub-tab logic for Module B
-    const navItems = {
-        'nav-center-dashboard': 'center-dashboard',
-        'nav-center-strategies': 'center-strategies',
-        'nav-center-pitfalls': 'center-pitfalls',
-        'nav-center-secrets': 'center-secrets'
-    };
-
-    Object.keys(navItems).forEach(id => {
+function initBlueSubTabs() {
+    const navs = { 'nav-blue-dash': 'blue-dash', 'nav-blue-pitfalls': 'blue-pitfalls', 'nav-blue-secrets': 'blue-secrets' };
+    Object.keys(navs).forEach(id => {
         document.getElementById(id).addEventListener('click', () => {
-            document.querySelectorAll('.center-nav-item').forEach(el => el.classList.remove('center-nav-active'));
-            document.getElementById(id).classList.add('center-nav-active');
-            document.querySelectorAll('.center-tab-content').forEach(el => el.classList.add('hidden'));
-            document.getElementById(navItems[id]).classList.remove('hidden');
+            document.querySelectorAll('#page-2 button').forEach(b => b.classList.remove('blue-nav-active'));
+            document.getElementById(id).classList.add('blue-nav-active');
+            document.querySelectorAll('.blue-content').forEach(c => c.classList.add('hidden'));
+            document.getElementById(navs[id]).classList.remove('hidden');
         });
     });
-
-    // Strategy sub-tabs
-    const stratBtns = {
-        'blue-btn-multi': 'blue-strat-multi',
-        'blue-btn-newlywed': 'blue-strat-newlywed',
-        'blue-btn-newborn': 'blue-strat-newborn'
-    };
-
-    Object.keys(stratBtns).forEach(id => {
-        document.getElementById(id).addEventListener('click', () => {
-            document.querySelectorAll('.blue-strat-btn').forEach(el => el.classList.remove('blue-active-strat', 'text-blue-primary'));
-            document.getElementById(id).classList.add('blue-active-strat');
-            document.querySelectorAll('.blue-strat-detail').forEach(el => el.classList.add('hidden'));
-            document.getElementById(stratBtns[id]).classList.remove('hidden');
-        });
-    });
-}
-
-function initBlueCalculators() {
-    const calcInputs = ['blue-multi-kids', 'blue-multi-3gen'];
-    calcInputs.forEach(id => {
-        document.getElementById(id).addEventListener('change', calcBlueMulti);
-    });
-    calcBlueMulti();
-}
-
-function calcBlueMulti() {
-    const kids = parseInt(document.getElementById('blue-multi-kids').value);
-    const is3Gen = document.getElementById('blue-multi-3gen').checked;
-    const total = 40 + kids + (is3Gen ? 5 : 0);
-    document.getElementById('blue-multi-score-display').innerText = total + "점";
 }

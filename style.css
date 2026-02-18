@@ -3,7 +3,6 @@
   --sage-secondary: #556B2F;
   --sage-accent: #D97706;
   --blue-primary: #1E3A8A;
-  --blue-accent: #F59E0B;
   --bg-warm: #F9FAFB;
 }
 
@@ -12,52 +11,32 @@ body {
   background-color: #fff;
 }
 
-/* Nanobanana Faint Background */
+/* Faint Architecture Background */
 .faint-bg-image {
     position: absolute;
     inset: 0;
     background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=2000');
     background-size: cover;
     background-position: center;
-    opacity: 0.12;
+    opacity: 0.15;
     filter: blur(8px);
     transform: scale(1.1);
 }
 
-/* Global Nav Styling */
-.global-nav-btn {
+/* Global Nav Switcher */
+.page-nav-btn {
     font-size: 0.875rem;
     transition: all 0.3s ease;
 }
 
-.global-nav-btn.active-global {
+.page-nav-btn.active-page {
     background-color: rgba(0,0,0,0.02);
 }
 
-/* Module B (Blue) Nav Tabs */
-.center-nav-item {
-    font-weight: 500;
-    color: #9CA3AF;
-    transition: all 0.3s ease;
-}
-
-.center-nav-item.center-nav-active {
-    border-bottom: 3px solid var(--blue-primary);
-    color: var(--blue-primary);
+/* Blue Nav Items */
+#page-2 .blue-nav-active {
+    border-bottom: 2px solid white;
     font-weight: 700;
-}
-
-/* Blue Strategy Sub-tabs */
-.blue-strat-btn {
-    font-weight: 700;
-    color: #9CA3AF;
-    transition: all 0.3s ease;
-}
-
-.blue-strat-btn.blue-active-strat {
-    background-color: white !important;
-    color: var(--blue-primary) !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
 /* Chart Container Size */
@@ -73,7 +52,7 @@ body {
     .chart-container { height: 350px; }
 }
 
-/* Animation Utilities */
+/* Tab Transitions */
 .animate-fade-in {
     animation: fadeIn 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
@@ -83,7 +62,7 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Range Input Slider Styling */
+/* Custom Range Input */
 input[type=range]::-webkit-slider-thumb {
     appearance: none;
     width: 24px;
@@ -95,10 +74,9 @@ input[type=range]::-webkit-slider-thumb {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-#sage-st-ltv::-webkit-slider-thumb { border-color: var(--sage-accent); }
-#blue-st-ltv::-webkit-slider-thumb { border-color: var(--blue-accent); }
+#s-st-ltv::-webkit-slider-thumb { border-color: var(--sage-accent); }
 
-/* Custom Scrollbar */
+/* Scrollbar Control */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 10px; }
