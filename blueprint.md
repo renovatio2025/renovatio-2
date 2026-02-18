@@ -1,23 +1,28 @@
-# Public Housing & Shin-hui-ta Strategic Analyzer - Refined Classic
+# Cheongyak Strategy Center Blueprint
 
 ## Overview
-A restoration of the original, highly readable design with enhanced visual aesthetics. Focuses on clarity, proper text alignment, and a professional "Sophisticated Architecture" background.
+A comprehensive strategic guide and simulator for Korea's Special Supply (Special Priority) housing subscriptions. It focuses on maximizing winning chances by visualizing complex rules and providing interactive tools.
 
-## Design Strategy
-- **Layout:** Restored to the first successful version (Wide containers, clear grids).
-- **Typography:** Noto Sans KR (Standard for Korean web readability) to ensure sentences stay on one line where intended.
-- **Visual Enhancement:** 
-    - Full-page background with a high-quality architectural image (Warm/Modern).
-    - Subtle glassmorphism on content cards for depth without sacrificing readability.
-    - Improved spacing to prevent awkward line breaks.
-- **Color Palette:** Warm White, Navy, Sage Green, and Amber (Original palette).
+## Key Sections
+1. **Dashboard Overview:** Visualizes the 70% (Special) vs 30% (General) supply rule in public housing.
+2. **Strategy Simulator:** 
+    - **Multi-child:** 100pt scale calculator with focus on 3-generation cohabitation.
+    - **Newlywed:** 13pt scale breakdown with "Marriage duration vs Children" strategy.
+    - **Newborn:** Highlighting the new "Cheat Key" for recent parents.
+3. **The Pitfall Zone:** Side-by-side comparison of strict vs. flexible residence requirements.
+4. **The Hidden Opportunity:** Explaining the 100% random draw mechanism for Reserved Candidates.
 
-## Key Features (Restored)
-1. **Supply Ratio Chart:** Restored to the clean doughnut chart.
-2. **Interactive Calculators:** Stable logic and layout for Multi-child, Newlywed, etc.
-3. **Shin-hui-ta Simulator:** Clear visual ring and sliders.
+## Technical Stack
+- **Styling:** Tailwind CSS with a 'Strategic Calm' palette (Blue 900, Amber 500, Emerald 500).
+- **Visualization:** Chart.js for supply ratio analysis.
+- **Logic:** Vanilla JavaScript for dynamic score calculation and tab management.
+
+## Design Philosophy
+- **Professional & Trustworthy:** High-readability fonts (Noto Sans KR) and clean card-based layouts.
+- **Action-Oriented:** Moves users from understanding (Dashboard) to experimentation (Simulator) to caution (Pitfalls).
+- **Mobile Optimized:** Responsive navigation and scrollable tab areas.
 
 ## Implementation Steps
-1. **Restore Structure:** Roll back `index.html` and `main.js` to the stable original logic.
-2. **Theming:** Apply the background image and card styles in `style.css`.
-3. **Verification:** Check line lengths and mobile responsiveness.
+1. **Update index.html:** Implement the multi-tab structure and Tailwind layout.
+2. **Update style.css:** Add custom scrollbars, card shadows, and animations.
+3. **Update main.js:** Implement calculation logic, tab switching, and Chart.js initialization.

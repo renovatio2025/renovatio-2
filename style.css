@@ -1,92 +1,91 @@
-body { 
-    font-family: 'Noto Sans KR', sans-serif; 
-    background-color: #fff; 
-    color: #333; 
+:root {
+  --primary: #1E3A8A;
+  --secondary: #F59E0B;
+  --bg-warm: #F9FAFB;
 }
 
-/* Nanobanana Faint Background Image Style */
-.faint-bg-image {
-    position: absolute;
-    inset: 0;
-    background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=2000');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.12; /* Faint look */
-    filter: blur(8px); /* Soft focus */
-    transform: scale(1.1); /* Prevent blurred edges */
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: var(--bg-warm);
+  color: #1F2937;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Chart Container Restored */
-.chart-container { 
-    position: relative; 
-    width: 100%; 
-    max-width: 450px; 
-    margin: 0 auto; 
-    height: 300px; 
-}
-
-@media (min-width: 768px) { 
-    .chart-container { height: 350px; } 
-}
-
-/* Tab Button Restored & Refined */
-.tab-btn {
+/* Navigation Tabs Styling */
+.nav-item {
     font-weight: 500;
-    color: #888;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translateY(0);
+    color: #9CA3AF;
+    transition: all 0.3s ease;
 }
 
-.tab-btn:hover {
-    color: #2C3E50;
-    transform: translateY(-2px);
-}
-
-.tab-btn.active {
-    background-color: #2C3E50 !important;
-    color: white !important;
-    border-color: #2C3E50 !important;
+.nav-item.nav-active {
+    border-bottom: 3px solid var(--primary);
+    color: var(--primary);
     font-weight: 700;
-    box-shadow: 0 10px 20px rgba(44, 62, 80, 0.2);
 }
 
-/* Premium Range Input */
-input[type=range].st-calc {
-    height: 6px;
-    background: #f1f1f1;
+/* Strategy Tabs Styling */
+.strat-btn {
+    font-weight: 700;
+    color: #9CA3AF;
+    transition: all 0.3s ease;
 }
 
-input[type=range].st-calc::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 24px;
-    height: 24px;
-    background: #D97706;
-    cursor: pointer;
-    border-radius: 50%;
-    border: 4px solid white;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
+.strat-btn.active-strat {
+    background-color: white !important;
+    color: var(--primary) !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-input[type=range].st-calc::-webkit-slider-thumb:hover {
-    transform: scale(1.2);
+/* Chart Container Control */
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    height: 300px;
 }
 
-/* Content Fade In */
-.tab-content {
-    animation: fadeInSlide 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+@media (min-width: 768px) {
+    .chart-container { height: 350px; }
 }
 
-@keyframes fadeInSlide {
-    from { opacity: 0; transform: translateY(20px); }
+/* Custom Card Shadow */
+.card-shadow {
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+/* Animation Utilities */
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Mobile Responsiveness */
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+/* Responsive Overrides */
 @media (max-width: 640px) {
-    .tab-btn {
-        font-size: 0.75rem;
-        padding: 0.5rem 1.25rem;
+    .tab-content {
+        padding-top: 1rem;
     }
 }

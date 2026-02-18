@@ -1,25 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
     initSupplyChart();
-    initTabs();
-    initCalculators();
-    updateProfitShare();
+    initTabNavigation();
+    initStrategySimulation();
+    initScoreCalculations();
 });
 
 /**
- * Supply Ratio Chart - Original Style Restored
+ * Supply Ratio Chart - Clean Professional Style
  */
 function initSupplyChart() {
-    const canvas = document.getElementById('supplyRatioChart');
+    const canvas = document.getElementById('supplyChart');
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
     new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ['특별공급 (80%)', '일반공급 (20%)'],
+            labels: ['특별공급 (70%)', '일반공급 (30%)'],
             datasets: [{
-                data: [80, 20],
-                backgroundColor: ['#2C3E50', '#E5E7EB'],
+                data: [70, 30],
+                backgroundColor: ['#1E3A8A', '#E5E7EB'],
                 borderWidth: 0,
                 hoverOffset: 15
             }]
@@ -27,53 +27,55 @@ function initSupplyChart() {
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            cutout: '80%',
+            cutout: '75%',
             plugins: {
                 legend: { 
                     position: 'bottom', 
                     labels: { 
                         padding: 30, 
-                        font: { family: '"Noto Sans KR"', size: 12, weight: '700' },
-                        color: '#2C3E50'
+                        font: { family: '"Noto Sans KR"', size: 14, weight: '700' },
+                        color: '#1F2937'
                     } 
-                },
-                tooltip: { 
-                    padding: 20,
-                    backgroundColor: '#2C3E50',
-                    titleFont: { size: 14, weight: 'bold' },
-                    bodyFont: { size: 12 }
                 }
+            },
+            animation: {
+                animateScale: true,
+                animateRotate: true
             }
         }
     });
 }
 
 /**
- * Tab Navigation Logic
+ * Main Tab Navigation Logic
  */
-function initTabs() {
-    const tabMapping = {
-        'btn-multi-child': 'tab-multi-child',
-        'btn-newlywed': 'tab-newlywed',
-        'btn-first-life': 'tab-first-life',
-        'btn-newborn': 'tab-newborn'
+function initTabNavigation() {
+    const tabs = {
+        'nav-dashboard': 'dashboard',
+        'nav-strategies': 'strategies',
+        'nav-pitfalls': 'pitfalls',
+        'nav-secrets': 'secrets'
     };
 
-    Object.keys(tabMapping).forEach(btnId => {
+    Object.keys(tabs).forEach(btnId => {
         const btn = document.getElementById(btnId);
         if (!btn) return;
 
         btn.addEventListener('click', () => {
             // UI Update
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+            document.querySelectorAll('.nav-item').forEach(b => {
+                b.classList.remove('nav-active', 'text-primary');
+                b.classList.add('text-gray-500');
+            });
+            btn.classList.add('nav-active', 'text-primary');
+            btn.classList.remove('text-gray-500');
 
             // Content Update
             document.querySelectorAll('.tab-content').forEach(c => {
                 c.classList.add('hidden');
                 c.classList.remove('block');
             });
-            const activeContent = document.getElementById(tabMapping[btnId]);
+            const activeContent = document.getElementById(tabs[btnId]);
             activeContent.classList.remove('hidden');
             activeContent.classList.add('block');
         });
@@ -81,79 +83,77 @@ function initTabs() {
 }
 
 /**
- * Calculators Initialization
+ * Strategy Sub-tabs Switching
  */
-function initCalculators() {
-    // Multi-child
-    document.querySelectorAll('.mc-calc').forEach(el => {
-        el.addEventListener('change', () => {
-            const kids = parseInt(document.getElementById('mc-kids').value);
-            const baby = parseInt(document.getElementById('mc-baby').value);
-            const nohouse = parseInt(document.getElementById('mc-nohouse').value);
-            document.getElementById('mc-result').innerText = (kids + baby + nohouse);
-        });
-    });
+function initStrategySimulation() {
+    const stratButtons = {
+        'btn-multi': 'strat-multi',
+        'btn-newlywed': 'strat-newlywed',
+        'btn-newborn': 'strat-newborn'
+    };
 
-    // Newlywed
-    document.querySelectorAll('.nw-calc').forEach(el => {
-        el.addEventListener('change', () => {
-            const kids = parseInt(document.getElementById('nw-kids').value);
-            const reside = parseInt(document.getElementById('nw-reside').value);
-            const bank = parseInt(document.getElementById('nw-bank').value);
-            document.getElementById('nw-result').innerText = (kids + reside + bank + 4);
-        });
-    });
+    Object.keys(stratButtons).forEach(btnId => {
+        const btn = document.getElementById(btnId);
+        if (!btn) return;
 
-    // Newborn
-    document.querySelectorAll('.nb-calc').forEach(el => {
-        el.addEventListener('change', () => {
-            const kids = parseInt(document.getElementById('nb-kids').value);
-            const reside = parseInt(document.getElementById('nb-reside').value);
-            document.getElementById('nb-result').innerText = (kids + reside + 4);
-        });
-    });
+        btn.addEventListener('click', () => {
+            // UI Update
+            document.querySelectorAll('.strat-btn').forEach(b => {
+                b.classList.remove('active-strat');
+                b.classList.add('text-gray-500');
+            });
+            btn.classList.add('active-strat');
+            btn.classList.remove('text-gray-500');
 
-    // Simulator
-    document.querySelectorAll('.st-calc').forEach(el => {
-        el.addEventListener('input', updateProfitShare);
+            // Content Update
+            document.querySelectorAll('.strategy-detail').forEach(c => {
+                c.classList.add('hidden');
+                c.classList.remove('block');
+            });
+            const activeContent = document.getElementById(stratButtons[btnId]);
+            activeContent.classList.remove('hidden');
+            activeContent.classList.add('block');
+        });
     });
 }
 
 /**
- * Shin-hui-ta Simulator Logic
+ * Score Calculators for Simulator
  */
-function updateProfitShare() {
-    const ltv = parseInt(document.getElementById('st-ltv').value);
-    const years = parseInt(document.getElementById('st-years').value);
-    const kidsInput = document.querySelector('input[name="st-kids"]:checked');
-    const kids = kidsInput ? parseInt(kidsInput.value) : 2;
+function initScoreCalculations() {
+    // Multi-child Calculator
+    const mcInputs = ['multi-kids', 'multi-babies', 'multi-3gen'];
+    mcInputs.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.addEventListener('change', calcMultiScore);
+        }
+    });
 
-    document.getElementById('st-ltv-val').innerText = ltv + "%";
-    document.getElementById('st-years-val').innerText = years + "년";
+    // Initial calculation
+    calcMultiScore();
+}
 
-    // Matrix Approximation
-    let share = 50;
-    if (ltv <= 30) share = 10;
-    else if (ltv <= 50) share = 30;
-
-    const discount = kids >= 2 ? 20 : (kids === 1 ? 10 : 0);
-    share = Math.max(10, share - discount);
-
-    document.getElementById('share-percent').innerText = share + "%";
+function calcMultiScore() {
+    const kids = parseInt(document.getElementById('multi-kids').value);
+    const babies = parseInt(document.getElementById('multi-babies').value);
+    const is3Gen = document.getElementById('multi-3gen').checked;
     
-    // Ring Animation (Total 754 dasharray)
-    const visualPercent = share * 2; 
-    const offset = 754 - (754 * (visualPercent / 100));
-    const ring = document.getElementById('profit-ring');
-    ring.style.strokeDashoffset = offset;
-    ring.style.stroke = share > 30 ? '#EF4444' : '#D97706';
+    // Base score (Res/House/Savings) assumed max 40 for serious candidates
+    const baseScore = 40; 
+    const threeGenScore = is3Gen ? 5 : 0;
 
-    const comment = document.getElementById('share-comment');
-    if (share > 30) {
-        comment.innerText = "수익 반납 비율이 높음";
-        comment.style.color = "#EF4444";
+    const total = baseScore + kids + babies + threeGenScore;
+    
+    const displayEl = document.getElementById('multi-score-display');
+    displayEl.innerText = total + "점";
+
+    // Dynamic Styling based on score
+    if (total >= 80) {
+        displayEl.className = "text-4xl font-black text-emerald-600";
+    } else if (total >= 75) {
+        displayEl.className = "text-4xl font-black text-amber-600";
     } else {
-        comment.innerText = "추천하는 전략입니다.";
-        comment.style.color = "#2C3E50";
+        displayEl.className = "text-4xl font-black text-primary";
     }
 }
