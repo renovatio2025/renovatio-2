@@ -1,20 +1,22 @@
 body { 
     font-family: 'Noto Sans KR', sans-serif; 
-    background-color: #F9F9F7; 
+    background-color: #fff; 
     color: #333; 
 }
 
-/* Sophisticated Background Container */
-.bg-gradient-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+/* Nanobanana Faint Background Image Style */
+.faint-bg-image {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=2000');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.12; /* Faint look */
+    filter: blur(8px); /* Soft focus */
+    transform: scale(1.1); /* Prevent blurred edges */
 }
 
-/* Chart Container Size (Restored) */
+/* Chart Container Restored */
 .chart-container { 
     position: relative; 
     width: 100%; 
@@ -27,11 +29,17 @@ body {
     .chart-container { height: 350px; } 
 }
 
-/* Navigation Tabs (Restored Style) */
+/* Tab Button Restored & Refined */
 .tab-btn {
     font-weight: 500;
-    color: #666;
-    transition: all 0.3s ease;
+    color: #888;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(0);
+}
+
+.tab-btn:hover {
+    color: #2C3E50;
+    transform: translateY(-2px);
 }
 
 .tab-btn.active {
@@ -39,9 +47,15 @@ body {
     color: white !important;
     border-color: #2C3E50 !important;
     font-weight: 700;
+    box-shadow: 0 10px 20px rgba(44, 62, 80, 0.2);
 }
 
-/* Range Input Slider Styling */
+/* Premium Range Input */
+input[type=range].st-calc {
+    height: 6px;
+    background: #f1f1f1;
+}
+
 input[type=range].st-calc::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -50,24 +64,29 @@ input[type=range].st-calc::-webkit-slider-thumb {
     background: #D97706;
     cursor: pointer;
     border-radius: 50%;
-    border: 3px solid white;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border: 4px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
 }
 
-/* Animation Utilities */
+input[type=range].st-calc::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+/* Content Fade In */
 .tab-content {
-    animation: fadeIn 0.4s ease-out;
+    animation: fadeInSlide 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Responsive Fixes */
+/* Mobile Responsiveness */
 @media (max-width: 640px) {
     .tab-btn {
-        font-size: 0.8rem;
-        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+        padding: 0.5rem 1.25rem;
     }
 }

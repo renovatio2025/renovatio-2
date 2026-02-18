@@ -33,16 +33,15 @@
         }
     </script>
 </head>
-<body class="text-slate-800 antialiased">
-    <!-- Sophisticated Background -->
-    <div class="fixed inset-0 z-[-1]">
-        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=2000" 
-             alt="Luxury House" class="w-full h-full object-cover opacity-15">
-        <div class="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-white/95"></div>
+<body class="text-slate-800 antialiased overflow-x-hidden">
+    <!-- Nanobanana-style Faint Background -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden">
+        <div class="faint-bg-image"></div>
+        <div class="absolute inset-0 bg-white/80 backdrop-blur-[2px]"></div>
     </div>
 
     <!-- Navigation -->
-    <nav class="bg-primary/95 backdrop-blur-sm text-white sticky top-0 z-50 shadow-lg">
+    <nav class="bg-primary/95 backdrop-blur-md text-white sticky top-0 z-50 shadow-md">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="font-bold text-xl tracking-tight flex items-center gap-2">
                 <span>🏘️</span> 공공분양 & 신희타 당첨 솔루션
@@ -56,10 +55,10 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="py-20 px-4 text-center">
+    <header class="py-24 px-4 text-center">
         <div class="max-w-4xl mx-auto">
             <span class="inline-block px-4 py-1 bg-accent/10 text-accent rounded-full text-xs font-bold mb-6">2026년 최신 공급 계획 및 제도 반영</span>
-            <h1 class="text-4xl md:text-5xl font-bold mb-8 text-primary leading-[1.2]">3기 신도시 & 공공분양<br/>당첨 확률 극대화 전략</h1>
+            <h1 class="text-4xl md:text-5xl font-bold mb-8 text-primary leading-[1.3]">3기 신도시 & 공공분양<br/>당첨 확률 극대화 전략</h1>
             <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
                 인천 계양, 하남 교산 등 주요 3기 신도시 본청약 본격화.<br/>
                 복잡한 청약 자격과 가점 계산, <strong>단 한 페이지</strong>로 스마트하게 분석하고 준비하십시오.
@@ -70,7 +69,7 @@
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4 py-12 space-y-24">
+    <main class="max-w-6xl mx-auto px-4 py-12 space-y-28">
 
         <!-- Section 1: Strategy -->
         <section id="strategy" class="scroll-mt-24">
@@ -79,7 +78,7 @@
                 <p class="text-gray-500">물량 배정 구조를 이해하는 것이 당첨의 첫걸음입니다.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8 items-center bg-white/70 backdrop-blur-md p-8 md:p-12 rounded-[2rem] shadow-xl border border-white/50">
+            <div class="grid md:grid-cols-2 gap-10 items-center bg-white/60 backdrop-blur-lg p-10 md:p-14 rounded-[2.5rem] shadow-2xl border border-white/50">
                 <div class="space-y-6">
                     <h3 class="text-2xl font-bold text-secondary flex items-center gap-3">
                         <span class="text-3xl">🎯</span> 특별공급 집중 전략
@@ -89,14 +88,14 @@
                         일반공급(20%)은 납입 인정 금액이 매우 높아야 하므로, 
                         전략적으로 본인에게 유리한 <strong>특별공급 유형</strong>을 선점해야 합니다.
                     </p>
-                    <div class="bg-white/80 p-5 rounded-2xl border-l-4 border-accent shadow-sm">
+                    <div class="bg-white/90 p-6 rounded-2xl border-l-4 border-accent shadow-sm">
                         <p class="font-bold text-primary mb-1">💡 필승 가이드</p>
                         <p class="text-gray-600">상황(자녀 수, 혼인 여부, 소득)에 맞는 가점 관리가 핵심입니다.</p>
                     </div>
                 </div>
 
                 <div class="flex flex-col items-center">
-                    <h4 class="text-sm font-bold text-gray-400 mb-6 uppercase tracking-widest">공공분양 물량 배정 비율</h4>
+                    <h4 class="text-xs font-bold text-gray-400 mb-8 uppercase tracking-[0.2em]">공공분양 물량 배정 비율</h4>
                     <div class="chart-container">
                         <canvas id="supplyRatioChart"></canvas>
                     </div>
@@ -106,30 +105,30 @@
 
         <!-- Section 2: Qualifications -->
         <section id="qualifications" class="scroll-mt-24">
-            <div class="bg-secondary/5 rounded-[2.5rem] p-8 md:p-14 border border-secondary/10">
-                <h2 class="text-3xl font-bold text-secondary mb-10 flex items-center gap-3">
+            <div class="bg-secondary/5 rounded-[3rem] p-10 md:p-16 border border-secondary/10 backdrop-blur-sm">
+                <h2 class="text-3xl font-bold text-secondary mb-12 flex items-center gap-3">
                     <span>✅</span> 기본 자격 요건 체크리스트
                 </h2>
 
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100">
-                        <div class="text-4xl mb-5">📘</div>
+                <div class="grid md:grid-cols-3 gap-10">
+                    <div class="bg-white/90 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all border border-white">
+                        <div class="text-4xl mb-6">📘</div>
                         <h3 class="font-bold text-xl mb-4 text-primary">청약 통장</h3>
                         <p class="text-sm text-gray-500 leading-relaxed">
                             납입 횟수가 핵심입니다. 24개월 이상, 24회 이상 납입을 미리 준비하여 1순위를 확보하세요.
                         </p>
                     </div>
 
-                    <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100">
-                        <div class="text-4xl mb-5">🏠</div>
+                    <div class="bg-white/90 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all border border-white">
+                        <div class="text-4xl mb-6">🏠</div>
                         <h3 class="font-bold text-xl mb-4 text-primary">무주택 & 세대주</h3>
                         <p class="text-sm text-gray-500 leading-relaxed">
                             공공분양은 세대원 전원 무주택이 기본입니다. 유형에 따라 세대주 요건이 필수일 수 있습니다.
                         </p>
                     </div>
 
-                    <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100">
-                        <div class="text-4xl mb-5">💰</div>
+                    <div class="bg-white/90 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all border border-white">
+                        <div class="text-4xl mb-6">💰</div>
                         <h3 class="font-bold text-xl mb-4 text-primary">자산 및 소득</h3>
                         <p class="text-sm text-gray-500 leading-relaxed">
                             부동산 2.15억, 자동차 3.7천만원 이하 기준을 준수해야 하며, 신생아 특례시 완화됩니다.
@@ -146,43 +145,43 @@
                 <p class="text-gray-500">가장 유리한 전형을 선택하고 예상 가점을 확인해보세요.</p>
             </div>
 
-            <div class="flex flex-wrap justify-center gap-3 mb-10">
-                <button id="btn-multi-child" class="tab-btn active px-6 py-3 rounded-full border border-gray-200 bg-white shadow-sm transition-all hover:bg-gray-50">다자녀 가구</button>
-                <button id="btn-newlywed" class="tab-btn px-6 py-3 rounded-full border border-gray-200 bg-white shadow-sm transition-all hover:bg-gray-50">신혼부부</button>
-                <button id="btn-first-life" class="tab-btn px-6 py-3 rounded-full border border-gray-200 bg-white shadow-sm transition-all hover:bg-gray-50">생애최초</button>
-                <button id="btn-newborn" class="tab-btn px-6 py-3 rounded-full border border-accent/20 bg-white shadow-sm transition-all hover:bg-gray-50 text-secondary font-bold">👶 신생아</button>
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button id="btn-multi-child" class="tab-btn active px-8 py-3 rounded-full border border-gray-200 bg-white/80 shadow-sm transition-all hover:bg-white">다자녀 가구</button>
+                <button id="btn-newlywed" class="tab-btn px-8 py-3 rounded-full border border-gray-200 bg-white/80 shadow-sm transition-all hover:bg-white">신혼부부</button>
+                <button id="btn-first-life" class="tab-btn px-8 py-3 rounded-full border border-gray-200 bg-white/80 shadow-sm transition-all hover:bg-white">생애최초</button>
+                <button id="btn-newborn" class="tab-btn px-8 py-3 rounded-full border border-accent/20 bg-white/80 shadow-sm transition-all hover:bg-white text-secondary font-bold">👶 신생아</button>
             </div>
 
-            <div class="bg-white/80 backdrop-blur-md rounded-[2.5rem] shadow-xl border border-white/50 p-8 md:p-12 min-h-[450px]">
+            <div class="bg-white/70 backdrop-blur-xl rounded-[3rem] shadow-2xl border border-white/50 p-10 md:p-16 min-h-[500px]">
                 <!-- Multi-child -->
                 <div id="tab-multi-child" class="tab-content block">
-                    <div class="grid md:grid-cols-2 gap-12">
-                        <div class="space-y-6">
-                            <h3 class="text-2xl font-bold text-primary">👨‍👩‍👧‍👦 다자녀 가구 특별공급</h3>
-                            <p class="text-gray-600 leading-loose">미성년 자녀 2명 이상이면 가능하나, 인기 단지는 3명 이상이 안정권입니다.</p>
-                            <div class="bg-red-50 p-5 rounded-2xl border-l-4 border-red-400 text-red-800">
-                                <p class="font-bold mb-1">커트라인 안내</p>
-                                <p class="text-sm">주요 인기 단지의 당첨권은 80~85점 수준에서 형성됩니다.</p>
+                    <div class="grid md:grid-cols-2 gap-16">
+                        <div class="space-y-8">
+                            <h3 class="text-3xl font-bold text-primary">👨‍👩‍👧‍👦 다자녀 가구 특별공급</h3>
+                            <p class="text-gray-600 text-lg leading-loose">미성년 자녀 2명 이상이면 가능하나, 실제 인기 단지는 자녀 3명 이상이 안정권입니다.</p>
+                            <div class="bg-red-50/80 p-6 rounded-2xl border-l-4 border-red-400 text-red-800">
+                                <p class="font-bold mb-1 italic">Competition Insight</p>
+                                <p class="text-sm">수도권 주요 입지의 당첨 커트라인은 80~85점에서 형성됩니다.</p>
                             </div>
                         </div>
-                        <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100">
-                            <h4 class="font-bold text-gray-700 mb-6">다자녀 가점 계산기 (100점)</h4>
-                            <div class="space-y-5">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-sm">미성년 자녀 수 (40점)</span>
-                                    <select id="mc-kids" class="mc-calc border rounded-lg p-2 w-32"><option value="25">2명</option><option value="35">3명</option><option value="40">4명 이상</option></select>
+                        <div class="bg-white/80 p-10 rounded-[2rem] shadow-inner border border-gray-100">
+                            <h4 class="font-bold text-gray-700 mb-8 uppercase tracking-widest text-xs">Score Calculator</h4>
+                            <div class="space-y-6">
+                                <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+                                    <span class="font-medium">미성년 자녀 수 (40점)</span>
+                                    <select id="mc-kids" class="mc-calc bg-gray-50 border-none rounded-xl p-3 w-32 focus:ring-2 ring-accent"><option value="25">2명</option><option value="35">3명</option><option value="40">4명 이상</option></select>
                                 </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-sm">영유아 자녀 수 (15점)</span>
-                                    <select id="mc-baby" class="mc-calc border rounded-lg p-2 w-32"><option value="0">없음</option><option value="5">1명</option><option value="10">2명</option><option value="15">3명 이상</option></select>
+                                <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+                                    <span class="font-medium">영유아 자녀 수 (15점)</span>
+                                    <select id="mc-baby" class="mc-calc bg-gray-50 border-none rounded-xl p-3 w-32 focus:ring-2 ring-accent"><option value="0">없음</option><option value="5">1명</option><option value="10">2명</option><option value="15">3명 이상</option></select>
                                 </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-sm">무주택 기간 (20점)</span>
-                                    <select id="mc-nohouse" class="mc-calc border rounded-lg p-2 w-32"><option value="0">1년 미만</option><option value="10">1-5년</option><option value="15">5-10년</option><option value="20">10년 이상</option></select>
+                                <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+                                    <span class="font-medium">무주택 기간 (20점)</span>
+                                    <select id="mc-nohouse" class="mc-calc bg-gray-50 border-none rounded-xl p-3 w-32 focus:ring-2 ring-accent"><option value="0">1년 미만</option><option value="10">1-5년</option><option value="15">5-10년</option><option value="20">10년 이상</option></select>
                                 </div>
-                                <div class="mt-8 pt-6 border-t flex justify-between items-center">
-                                    <span class="font-bold text-lg">예상 가점:</span>
-                                    <span id="mc-result" class="text-3xl font-bold text-accent">25점</span>
+                                <div class="mt-10 pt-8 flex justify-between items-end">
+                                    <span class="font-bold text-gray-400 uppercase tracking-widest text-xs">Total Points</span>
+                                    <span id="mc-result" class="text-5xl font-bold text-accent">25<span class="text-lg font-medium ml-1">pts</span></span>
                                 </div>
                             </div>
                         </div>
@@ -191,33 +190,33 @@
 
                 <!-- Newlywed -->
                 <div id="tab-newlywed" class="tab-content hidden">
-                    <div class="grid md:grid-cols-2 gap-12">
-                        <div class="space-y-6">
-                            <h3 class="text-2xl font-bold text-primary">💍 신혼부부 특별공급</h3>
-                            <p class="text-gray-600 leading-loose">혼인 7년 이내 혹은 6세 이하 자녀 보유자 대상입니다. 1순위와 2순위의 차이가 큽니다.</p>
-                            <div class="bg-amber-50 p-5 rounded-2xl border-l-4 border-amber-400 text-amber-800">
-                                <p class="font-bold mb-1">주의 사항</p>
-                                <p class="text-sm">자녀가 있는 신혼부부가 1순위이며, 무자녀 신혼부부는 2순위로 밀려납니다.</p>
+                    <div class="grid md:grid-cols-2 gap-16">
+                        <div class="space-y-8">
+                            <h3 class="text-3xl font-bold text-primary">💍 신혼부부 특별공급</h3>
+                            <p class="text-gray-600 text-lg leading-loose">혼인 7년 이내 혹은 6세 이하 자녀 보유자 대상입니다. 1순위 선점이 절대적으로 중요합니다.</p>
+                            <div class="bg-amber-50/80 p-6 rounded-2xl border-l-4 border-amber-400 text-amber-800">
+                                <p class="font-bold mb-1">Critical Point</p>
+                                <p class="text-sm">자녀가 있는 신혼부부가 1순위이며, 무자녀 신혼부부는 2순위(추첨제)를 노려야 합니다.</p>
                             </div>
                         </div>
-                        <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100">
-                            <h4 class="font-bold text-gray-700 mb-6">신혼부부 가점 계산기 (13점)</h4>
-                            <div class="space-y-5">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-sm">자녀 수 (3점)</span>
-                                    <select id="nw-kids" class="nw-calc border rounded-lg p-2 w-32"><option value="0">0명</option><option value="1">1명</option><option value="2">2명</option><option value="3">3명 이상</option></select>
+                        <div class="bg-white/80 p-10 rounded-[2rem] shadow-inner border border-gray-100">
+                            <h4 class="font-bold text-gray-700 mb-8 uppercase tracking-widest text-xs">Score Calculator</h4>
+                            <div class="space-y-6">
+                                <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+                                    <span class="font-medium">자녀 수 (3점)</span>
+                                    <select id="nw-kids" class="nw-calc bg-gray-50 border-none rounded-xl p-3 w-32 focus:ring-2 ring-accent"><option value="0">0명</option><option value="1">1명</option><option value="2">2명</option><option value="3">3명 이상</option></select>
                                 </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-sm">거주 기간 (3점)</span>
-                                    <select id="nw-reside" class="nw-calc border rounded-lg p-2 w-32"><option value="0">해당없음</option><option value="1">1년 미만</option><option value="2">1-3년</option><option value="3">3년 이상</option></select>
+                                <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+                                    <span class="font-medium">해당지역 거주 (3점)</span>
+                                    <select id="nw-reside" class="nw-calc bg-gray-50 border-none rounded-xl p-3 w-32 focus:ring-2 ring-accent"><option value="0">해당없음</option><option value="1">1년 미만</option><option value="2">1-3년</option><option value="3">3년 이상</option></select>
                                 </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-sm">납입 횟수 (3점)</span>
-                                    <select id="nw-bank" class="nw-calc border rounded-lg p-2 w-32"><option value="1">6-12회</option><option value="2">12-24회</option><option value="3">24회 이상</option></select>
+                                <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+                                    <span class="font-medium">납입 횟수 (3점)</span>
+                                    <select id="nw-bank" class="nw-calc bg-gray-50 border-none rounded-xl p-3 w-32 focus:ring-2 ring-accent"><option value="1">6-12회</option><option value="2">12-24회</option><option value="3">24회 이상</option></select>
                                 </div>
-                                <div class="mt-8 pt-6 border-t flex justify-between items-center">
-                                    <span class="font-bold text-lg">예상 가점:</span>
-                                    <span id="nw-result" class="text-3xl font-bold text-accent">7점</span>
+                                <div class="mt-10 pt-8 flex justify-between items-end">
+                                    <span class="font-bold text-gray-400 uppercase tracking-widest text-xs">Total Points</span>
+                                    <span id="nw-result" class="text-5xl font-bold text-accent">7<span class="text-lg font-medium ml-1">pts</span></span>
                                 </div>
                             </div>
                         </div>
@@ -226,25 +225,25 @@
 
                 <!-- First Life -->
                 <div id="tab-first-life" class="tab-content hidden">
-                    <div class="space-y-10 max-w-4xl mx-auto">
+                    <div class="space-y-12 max-w-4xl mx-auto">
                         <div class="text-center">
-                            <h3 class="text-2xl font-bold text-primary mb-4">🌱 생애최초 특별공급</h3>
-                            <p class="text-gray-600">100% 추첨제로 운영되어, 가점이 낮아도 기회가 있는 전형입니다.</p>
+                            <h3 class="text-3xl font-bold text-primary mb-6">🌱 생애최초 특별공급</h3>
+                            <p class="text-gray-600 text-lg">100% 추첨제로 운영되어, 가점 경쟁에서 자유로운 유일한 통로입니다.</p>
                         </div>
-                        <div class="grid md:grid-cols-2 gap-8">
-                            <div class="p-8 bg-blue-50 rounded-3xl border border-blue-100">
-                                <h4 class="font-bold text-blue-800 mb-4">필수 자격 요건</h4>
-                                <ul class="space-y-3 text-sm text-blue-700">
-                                    <li>• 과거 주택 소유 사실이 전혀 없을 것</li>
-                                    <li>• 저축액 선납금 포함 600만원 이상</li>
-                                    <li>• 5년 이상 소득세 납부 실적</li>
-                                    <li>• 혼인 중이거나 미혼 자녀가 있을 것</li>
+                        <div class="grid md:grid-cols-2 gap-10">
+                            <div class="p-10 bg-blue-50/80 rounded-[2.5rem] border border-blue-100 shadow-sm">
+                                <h4 class="font-bold text-blue-800 mb-6 text-xl">필수 자격 요건</h4>
+                                <ul class="space-y-4 text-gray-700">
+                                    <li class="flex items-start gap-3"><span>✔️</span> 과거 주택 소유 사실이 전혀 없을 것</li>
+                                    <li class="flex items-start gap-3"><span>✔️</span> 저축액 선납금 포함 600만원 이상</li>
+                                    <li class="flex items-start gap-3"><span>✔️</span> 5년 이상 소득세 납부 실적</li>
+                                    <li class="flex items-start gap-3"><span>✔️</span> 혼인 중이거나 미혼 자녀가 있을 것</li>
                                 </ul>
                             </div>
-                            <div class="p-8 bg-gray-50 rounded-3xl border border-gray-100 flex flex-col justify-center items-center text-center">
-                                <span class="text-5xl mb-4">🎲</span>
-                                <p class="font-bold text-primary mb-2">당첨은 오로지 운!</p>
-                                <p class="text-sm text-gray-500">전략보다 꾸준한 신청이 중요합니다.</p>
+                            <div class="p-10 bg-white/80 rounded-[2.5rem] border border-gray-100 flex flex-col justify-center items-center text-center shadow-lg">
+                                <span class="text-7xl mb-6">🎲</span>
+                                <p class="font-bold text-2xl text-primary mb-3">전략보다 운!</p>
+                                <p class="text-gray-500">모든 조건을 충족했다면 꾸준한 지원이 답입니다.</p>
                             </div>
                         </div>
                     </div>
@@ -252,29 +251,29 @@
 
                 <!-- Newborn -->
                 <div id="tab-newborn" class="tab-content hidden">
-                    <div class="grid md:grid-cols-2 gap-12">
-                        <div class="space-y-6">
-                            <h3 class="text-2xl font-bold text-secondary">👶 신생아 특별공급</h3>
-                            <p class="text-gray-600 leading-loose">2세 미만 자녀가 있는 가구 대상. 최근 물량이 대폭 확대된 가장 유리한 전형입니다.</p>
-                            <div class="bg-green-50 p-5 rounded-2xl border-l-4 border-green-400 text-green-800">
-                                <p class="font-bold mb-1">강력 추천</p>
-                                <p class="text-sm">신설된 전형으로 경쟁률이 낮아 당첨 확률이 매우 높습니다.</p>
+                    <div class="grid md:grid-cols-2 gap-16">
+                        <div class="space-y-8">
+                            <h3 class="text-3xl font-bold text-secondary">👶 신생아 특별공급</h3>
+                            <p class="text-gray-600 text-lg leading-loose">2세 미만 자녀 가구 대상. 물량이 대폭 확대된 2026년 가장 유망한 전략 전형입니다.</p>
+                            <div class="bg-green-50/80 p-6 rounded-2xl border-l-4 border-green-400 text-green-800">
+                                <p class="font-bold mb-1 italic">Strategist's Choice</p>
+                                <p class="text-sm">신설된 전형으로 경쟁률이 분산되어 당첨 확률이 매우 높습니다.</p>
                             </div>
                         </div>
-                        <div class="bg-gray-50 p-8 rounded-3xl border border-gray-100">
-                            <h4 class="font-bold text-gray-700 mb-6">신생아 가점 계산기 (10점)</h4>
-                            <div class="space-y-5">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-sm">자녀 수 (3점)</span>
-                                    <select id="nb-kids" class="nb-calc border rounded-lg p-2 w-32"><option value="1">1명</option><option value="2">2명</option><option value="3">3명 이상</option></select>
+                        <div class="bg-white/80 p-10 rounded-[2rem] shadow-inner border border-gray-100">
+                            <h4 class="font-bold text-gray-700 mb-8 uppercase tracking-widest text-xs">Score Calculator</h4>
+                            <div class="space-y-6">
+                                <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+                                    <span class="font-medium">자녀 수 (3점)</span>
+                                    <select id="nb-kids" class="nb-calc bg-gray-50 border-none rounded-xl p-3 w-32 focus:ring-2 ring-accent"><option value="1">1명</option><option value="2">2명</option><option value="3">3명 이상</option></select>
                                 </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-sm">해당지역 거주 (3점)</span>
-                                    <select id="nb-reside" class="nb-calc border rounded-lg p-2 w-32"><option value="0">해당없음</option><option value="1">1년 미만</option><option value="2">1-3년</option><option value="3">3년 이상</option></select>
+                                <div class="flex justify-between items-center pb-4 border-b border-gray-100">
+                                    <span class="font-medium">해당지역 거주 (3점)</span>
+                                    <select id="nb-reside" class="nb-calc bg-gray-50 border-none rounded-xl p-3 w-32 focus:ring-2 ring-accent"><option value="0">해당없음</option><option value="1">1년 미만</option><option value="2">1-3년</option><option value="3">3년 이상</option></select>
                                 </div>
-                                <div class="mt-8 pt-6 border-t flex justify-between items-center">
-                                    <span class="font-bold text-lg">예상 가점:</span>
-                                    <span id="nb-result" class="text-3xl font-bold text-secondary">8점</span>
+                                <div class="mt-10 pt-8 flex justify-between items-end">
+                                    <span class="font-bold text-gray-400 uppercase tracking-widest text-xs">Total Points</span>
+                                    <span id="nb-result" class="text-5xl font-bold text-secondary">8<span class="text-lg font-medium ml-1">pts</span></span>
                                 </div>
                             </div>
                         </div>
@@ -284,55 +283,51 @@
         </section>
 
         <!-- Section 4: Shin-hui-ta -->
-        <section id="shinhuita" class="scroll-mt-24 pb-20">
-            <div class="bg-white/90 backdrop-blur-md rounded-[3rem] shadow-2xl border border-white/50 overflow-hidden">
-                <div class="bg-primary p-10 md:p-14 text-white">
-                    <h2 class="text-3xl font-bold mb-4">🏘️ 신혼희망타운(신희타) 수익 공유 시뮬레이션</h2>
-                    <p class="opacity-80">수익 공유형 모기지 비율을 계산하여 가장 유리한 자금 계획을 세우세요.</p>
+        <section id="shinhuita" class="scroll-mt-24 pb-32">
+            <div class="bg-white/80 backdrop-blur-2xl rounded-[4rem] shadow-2xl border border-white/50 overflow-hidden">
+                <div class="bg-primary p-12 md:p-16 text-white text-center">
+                    <h2 class="text-4xl font-bold mb-4 font-serif">Shin-hui-ta Simulator</h2>
+                    <p class="text-xl opacity-70">수익 공유형 모기지 최적화 시뮬레이션</p>
                 </div>
                 
-                <div class="p-10 md:p-14">
-                    <div class="grid md:grid-cols-2 gap-16">
-                        <div class="space-y-10">
-                            <div>
-                                <h3 class="font-bold text-xl mb-6">시나리오 설정</h3>
-                                <div class="space-y-8">
-                                    <div>
-                                        <label class="block text-sm font-bold text-gray-500 mb-3 uppercase tracking-wider">자녀 수</label>
-                                        <div class="flex gap-4">
-                                            <label class="flex-1 cursor-pointer"><input type="radio" name="st-kids" value="0" class="hidden peer st-calc"><div class="p-3 text-center border rounded-xl peer-checked:bg-primary peer-checked:text-white transition-all text-sm">없음</div></label>
-                                            <label class="flex-1 cursor-pointer"><input type="radio" name="st-kids" value="1" class="hidden peer st-calc"><div class="p-3 text-center border rounded-xl peer-checked:bg-primary peer-checked:text-white transition-all text-sm">1명</div></label>
-                                            <label class="flex-1 cursor-pointer"><input type="radio" name="st-kids" value="2" checked class="hidden peer st-calc"><div class="p-3 text-center border rounded-xl peer-checked:bg-primary peer-checked:text-white transition-all text-sm">2명↑</div></label>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label class="flex justify-between text-sm font-bold text-gray-500 mb-3 uppercase tracking-wider">대출 비율 (LTV) <span id="st-ltv-val" class="text-accent">70%</span></label>
-                                        <input type="range" id="st-ltv" min="30" max="70" step="10" value="70" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-accent st-calc">
-                                    </div>
-                                    <div>
-                                        <label class="flex justify-between text-sm font-bold text-gray-500 mb-3 uppercase tracking-wider">예상 거주 기간 <span id="st-years-val" class="text-accent">5년</span></label>
-                                        <input type="range" id="st-years" min="1" max="20" step="1" value="5" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-accent st-calc">
+                <div class="p-12 md:p-20">
+                    <div class="grid md:grid-cols-2 gap-24 items-center">
+                        <div class="space-y-12">
+                            <div class="space-y-10">
+                                <div>
+                                    <label class="block text-xs font-bold text-gray-400 mb-5 uppercase tracking-[0.3em]">Number of Children</label>
+                                    <div class="flex gap-4">
+                                        <label class="flex-1 cursor-pointer"><input type="radio" name="st-kids" value="0" class="hidden peer st-calc"><div class="p-4 text-center border-2 border-gray-100 rounded-2xl peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all text-sm font-bold shadow-sm">없음</div></label>
+                                        <label class="flex-1 cursor-pointer"><input type="radio" name="st-kids" value="1" class="hidden peer st-calc"><div class="p-4 text-center border-2 border-gray-100 rounded-2xl peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all text-sm font-bold shadow-sm">1명</div></label>
+                                        <label class="flex-1 cursor-pointer"><input type="radio" name="st-kids" value="2" checked class="hidden peer st-calc"><div class="p-4 text-center border-2 border-gray-100 rounded-2xl peer-checked:border-primary peer-checked:bg-primary peer-checked:text-white transition-all text-sm font-bold shadow-sm">2명↑</div></label>
                                     </div>
                                 </div>
+                                <div class="space-y-4">
+                                    <label class="flex justify-between text-xs font-bold text-gray-400 uppercase tracking-[0.3em]">LTV Ratio <span id="st-ltv-val" class="text-accent text-lg">70%</span></label>
+                                    <input type="range" id="st-ltv" min="30" max="70" step="10" value="70" class="w-full h-2 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-accent st-calc">
+                                </div>
+                                <div class="space-y-4">
+                                    <label class="flex justify-between text-xs font-bold text-gray-400 uppercase tracking-[0.3em]">Expected Residence <span id="st-years-val" class="text-accent text-lg">5년</span></label>
+                                    <input type="range" id="st-years" min="1" max="20" step="1" value="5" class="w-full h-2 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-accent st-calc">
+                                </div>
                             </div>
-                            <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100 text-blue-800 leading-relaxed text-sm">
-                                <strong>💡 전문가 팁:</strong> 수익 공유 비율을 30% 이내로 낮추는 것이 장기적으로 유리합니다. 대출 비율과 자녀 계획을 종합적으로 고려하세요.
+                            <div class="p-8 bg-blue-50/50 rounded-3xl border border-blue-100/50 text-blue-900 leading-relaxed italic">
+                                "장기 거주와 자녀 계획을 종합하여 수익 공유 비율을 <strong>30% 미만</strong>으로 유지하는 것이 미래 자산 가치 형성에 가장 유리합니다."
                             </div>
                         </div>
 
-                        <div class="flex flex-col items-center justify-center bg-gray-50 rounded-[2.5rem] p-10 border border-gray-100">
-                            <h4 class="text-gray-400 text-xs font-bold mb-10 uppercase tracking-[0.2em]">LH 수익 공유 비율</h4>
-                            <div class="relative w-56 h-56 flex items-center justify-center">
-                                <svg class="w-full h-full transform -rotate-90">
-                                    <circle cx="112" cy="112" r="100" stroke="#E5E7EB" stroke-width="20" fill="transparent" />
-                                    <circle id="profit-ring" cx="112" cy="112" r="100" stroke="#D97706" stroke-width="20" fill="transparent" stroke-dasharray="628" stroke-dashoffset="628" class="transition-all duration-1000" />
+                        <div class="flex flex-col items-center justify-center">
+                            <div class="relative w-72 h-72 flex items-center justify-center">
+                                <svg class="w-full h-full transform -rotate-90 filter drop-shadow-xl">
+                                    <circle cx="144" cy="144" r="120" stroke="#F3F4F6" stroke-width="24" fill="transparent" />
+                                    <circle id="profit-ring" cx="144" cy="144" r="120" stroke="#D97706" stroke-width="24" fill="transparent" stroke-dasharray="754" stroke-dashoffset="754" class="transition-all duration-1000 ease-out" />
                                 </svg>
                                 <div class="absolute inset-0 flex flex-col items-center justify-center">
-                                    <span id="share-percent" class="text-5xl font-bold text-primary">30%</span>
-                                    <span class="text-xs text-gray-400 font-medium mt-1">공유 예정</span>
+                                    <span id="share-percent" class="text-6xl font-bold text-primary tracking-tighter">30%</span>
+                                    <span class="text-[10px] text-gray-400 font-bold uppercase tracking-[0.3em] mt-3">Profit Sharing</span>
                                 </div>
                             </div>
-                            <div id="share-comment" class="mt-10 font-bold text-lg text-primary">추천하는 전략입니다.</div>
+                            <div id="share-comment" class="mt-12 font-bold text-xl text-primary bg-white px-8 py-3 rounded-full shadow-lg border border-gray-50">추천하는 전략입니다.</div>
                         </div>
                     </div>
                 </div>
@@ -341,10 +336,15 @@
 
     </main>
 
-    <footer class="bg-primary text-white py-12 px-4 text-center">
-        <div class="max-w-4xl mx-auto space-y-4">
-            <p class="font-bold text-lg">청약 당첨의 꿈, 전략적인 분석으로 현실이 됩니다.</p>
-            <p class="text-gray-400 text-sm leading-loose">본 서비스는 참고용이며, 최종 자격 확인은 반드시 LH 청약플러스 공식 공고문을 확인하시기 바랍니다.<br/>&copy; 2026 Housing Strategy Solution. All rights reserved.</p>
+    <footer class="bg-primary text-white py-20 px-4 text-center border-t border-white/5">
+        <div class="max-w-4xl mx-auto space-y-6">
+            <p class="font-bold text-2xl font-serif italic text-accent">Housing Strategy Solution</p>
+            <p class="text-gray-400 text-sm leading-loose max-w-lg mx-auto">
+                본 분석 도구는 사용자의 편의를 위해 제작되었습니다. <br/>최종적인 청약 신청과 자격 판단은 반드시 공식 모집 공고문을 최우선으로 확인하시기 바랍니다.
+            </p>
+            <div class="pt-8 border-t border-white/10 text-[10px] text-gray-500 uppercase tracking-widest">
+                &copy; 2026 Nanobanana Premium Analytics. All rights reserved.
+            </div>
         </div>
     </footer>
 </body>
